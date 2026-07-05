@@ -3,6 +3,6 @@ packages:
   - typst
 tasks:
   - compile: |
-      echo "TODO COMPILE"
+      typst compile src-syllabus/courses/main.typ
   - upload: |
       echo "TODO UPLOAD"
