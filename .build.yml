@@ -3,6 +3,6 @@ packages:
   - typst
 tasks:
   - compile: |
-      typst compile src-syllabus/courses/main.typ
+      typst compile ~/rust-fit-course/src-syllabus/courses/main.typ ./course.pdf
   - upload: |
       echo "TODO UPLOAD"
