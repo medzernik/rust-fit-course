@@ -5,7 +5,7 @@
 #codly(zebra-fill: none)
 // #codly(languages: codly-languages, highlight-radius: 0cm, radius: 0cm, lang-radius: 0cm)
 #codly(languages: codly-languages)
-#import "src-syllabus/courses/template.typ": *
+#import "template.typ": *
 // Take a look at the file `template.typ` in the file panel
 // to customize this template and discover how it works.
 #show: project.with(
