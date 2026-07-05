@@ -4,7 +4,9 @@ packages:
 tasks:
   - compile: |
       typst compile ~/rust-fit-course/src-syllabus/courses/main.typ ./course.pdf
+      typst compile ~/rust-fit-course/src-syllabus/slides/week-XX/main.typ ./slide_XX.pdf
   - upload: |
       echo "TODO UPLOAD"
 artifacts:
   - course.pdf
+  - slide_XX.pdf
