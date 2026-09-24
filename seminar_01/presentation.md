@@ -8,10 +8,6 @@ options:
 Basic Seminar Info
 ===
 
-# Quick info
-
-Zed, RustRover, and rustup should be pre-installed on images in Windows and Linux computer rooms.
-
 # Topics
 
 | Topic                                                               | Date (exceptions) |
@@ -31,7 +27,9 @@ Zed, RustRover, and rustup should be pre-installed on images in Windows and Linu
 
 ![ics](presentation/FIT-REZ-ical.png)
 
-<!-- speaker_note: this is a speaker note -->
+
+> [!TIP]
+> Zed, RustRover, and rustup should be pre-installed on images in Windows and Linux computer rooms.
 
 Assignments
 ===
@@ -180,19 +178,152 @@ History
 - Rust 1.0
 - [MIR](https://blog.rust-lang.org/2016/04/19/MIR/)
 
-Rust Today & Features
+Rust Versioning
 ===
 
+# Versioning
 
+Rust is released every 6 weeks.
 
-Installation of Rust
+- stable
+- beta
+- nightly
+
+Installation is done using a separate tooling script `rustup`. We will look at this a little later.
+
+## Compiler versions vs. Editions
+
+Aside from the regular releases, Rust also releases `Editions`. There is usually an edition released every 3 years.
+Currently, there are `2015`, `2018`, `2021` and `2024` editions of Rust available.
+
+Editions introduce breaking changes into the language.
+
+This is possible to keep separate from the compiler updates due to the design of the compiler and
+language, [as seen here](https://blog.rust-lang.org/2018/07/27/what-is-rust-2018/#managing-compatibility)
+
+Most importantly:
+> Anything that does not require being a part of Rust 2018 will work on Rust 2015 as well. This is due to the way
+> editions work; given the small nature of possible changes, the compiler uses the same internal representation for all
+> editions.
+
+It is a standard practice to keep your Rust toolchain updated to the latest `stable` version, even in production.
+
+Installing Rust I.
 ===
 
+# Installing the Linker
 
-IDEs and Editors
+> [!IMPORTANT]
+> Rust does not have a linker. This means you have to install a linker yourself.
+
+## Windows - Installing the linker
+
+If we are on MS Windows, we will need to first install the `MS Build Tools`, available also from
+the [link here](https://aka.ms/vs/stable/vs_BuildTools.exe)
+
+After installing the Build Tools, we need to make sure we select the entire C/C++ compiler group, and also using the
+`Individual Packages` UI insert the `platform latest spectre` search term, then pick the resulting spectre safe
+libraries
+
+> [!TIP]
+> Rust takes a long time to compile. To make this about 1/3rd faster on Windows, you can set up a **Dev Drive**.
+> Follow the instructions [on the Microsoft page](https://learn.microsoft.com/en-us/windows/dev-drive/) if you wish to
+do so. Note that you need to make a separate partition of a minimum 50GB. You can shrink an existing NTFS partition
+while it's online. The **DevDrive** partition will use ReFS and Windows Defender will work in a deferred async scan mode
+to make compilation a lot faster.
+
+## Linux
+
+Install the `build-essentials` package on Ubuntu/Debian/Mint (or your distribution equivalent).
+
+## macOS
+
+Install the xcode-command line build tools
+
+Installing Rust II.
 ===
 
+# Installing Rust
 
+After we install the linker, we can download the `rustup` installer `.exe` and use it to setup the toolchain. `rustup`
+will serve as our Rust package manager
+
+We can find `rustup` on the webpage [rustup.rs](https://rustup.rs)
+or [rust-lang.org](https://rust-lang.org/tools/install/)
+
+That's it! You can open up a new terminal window after it's installed and try to run
+
+```bash +exec 
+cargo --version
+```
+
+We will look into Cargo a little later
+Build system - Cargo
+===
+
+- An amazing build system
+- Integrated documentation builder
+- Integrated dependency resolution
+- Uses a central registry [crates.io](https://crates.io)
+    - can use other, private registries as well
+- Uses `.lock` files to pin dependencies
+
+IDEs and Editors I.
+===
+
+There are many great editors to choose from. Rust has a fantastic LSP `rust-analyzer` that should integrate within
+almost any editor. Our recommendations are `Zed`, `Helix` or `RustRover`.
+
+# Zed
+
+Zed offers collaborative features and fast performance. It is a multi-language editor, focused on speed. It has an
+**integrated debugger**, **terminal**, **basic git support**. It has advanced **remote development features**, including
+support for
+`WSL` and `SSH` into other machines.
+
+You can get Zed on the page [zed.dev](https://zed.dev)
+> [!TIP]
+> Zed has a great `Helix` and `Vim` modes.
+
+# Helix
+
+Helix is a terminal editor, similair to `NeoVim` that has a focus on speed and uses `Kakoune` inspired keybinds. It is
+significantly easier to learn than `Vim`, but the motions are not transferrable easily.
+
+Helix is available ideally using either `WinGet` on Windows, or `brew install helix` on macOS and Linux. Distribution
+repos may have an outdated version of Helix.
+> [!NOTE]
+> Helix has an incomplete debugger protocol (DAP) support. Debugging may be complicated, but should be possible.
+
+> [!TIP]
+> when using **NeoVim**, **Helix** or other more obscure editors, you need to install **rust-analyzer** yourself.
+> You can do so by running the command:
+> $ rustup component add rust-analyzer
+> The reason for this is that **Zed** and **VSCode** all automatically pull in the LSP separately from the toolchain
+when launched.
+
+IDEs and Editors II.
+===
+
+# RustRover
+
+RustRover is a fully fledged IDE, available for free for non-commercial use, and also available for free for students.
+
+> [!NOTE]
+> RustRover uses its own parsing engine and custom-built analysis. You can learn
+more [in this YouTube video](https://youtu.be/VbdD1c3owKc)
+
+Compared to `rust-analyzer`, RustRover analysis engine can help with:
+
+- Cargo.toml file support
+- advanced Rust debugger including support for embedded targets and remote debugging
+- declarative macro tester
+- built-in procedural macro expansion
+- Rust REPL frontend
+- actix/reqwest web framework endpoint support
+- Cargo test support including highligts of lines where tests failed
+- Database client
+- Full-featured Git/subversion/other VCS clients
 
 Next Slide
 ===
