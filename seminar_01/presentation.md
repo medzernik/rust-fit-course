@@ -33,8 +33,13 @@ Zed, RustRover, and rustup should be pre-installed on images in Windows and Linu
 
 <!-- speaker_note: this is a speaker note -->
 
-Assignemonts
+Assignments
 ===
+
+1. Test module – some exercises to help practice concepts
+2. Homework assigment - the `/src` dir
+3. Code review – all assignments should have a code review by someone else in the course
+4. Group projects – final, bigger project
 
 | Homework                                                                            | Notes                                |
 |-------------------------------------------------------------------------------------|--------------------------------------|
@@ -92,6 +97,8 @@ Seminar_01 – About Rust
     - has a minimal runtime
     - no garbage collection
     - ~zero-cost abstractions
+- Great backwards compatibility
+- Fantastic compiler error messages
 
 <!-- column: 1 -->
 ![](presentation/fastest-elapsed.png)
@@ -101,8 +108,82 @@ Seminar_01 – About Rust
 
 
 
-Next Slide
+Where is Rust Used?
 ===
+
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+
+# Companies using Rust
+
+- Microsoft
+- Discord
+- Mozilla
+- Google (Android)
+- Linux
+- Toyota
+- Dropbox
+- Atlassian
+- 1Password
+- Cloudflare
+- JetBrains
+- Figma
+- AWS
+
+<!-- column: 1 -->
+
+# Current Adoption Numbers
+
+![](presentation/rust-adoption.png)
+[](https://devecosystem-2025.jetbrains.com/tools-and-trends)
+
+History
+===
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+
+# 2006
+
+- Created in Mozilla by *Graydon Hoare*
+
+> "I think I named it after fungi… that is "over-engineered for survival."
+> *\- Graydon Hoare*
+
+# 2010 - 2015
+
+- Project Servo
+- Early experiments
+- Originally had GC, was class-based
+- `0.11.0` caused some changes that may explain today's syntax
+    - ~[T] has been removed from the language. This type is superseded by the Vec type.
+    - ~str has been removed from the language. This type is superseded by the String type.
+    - ~T has been removed from the language. This type is superseded by the Box type.
+    - @T has been removed from the language. This type is superseded by the standard library’s std::gc::Gc type.
+- [Rust testcases over time](https://brson.github.io/archaea/)
+- [A look from 2012](https://purplesyringa.moe/blog/a-look-at-rust-from-2012/)
+- [Evolution of compiler errors](https://kobzol.github.io/rust/rustc/2025/05/16/evolution-of-rustc-errors.html)
+
+> Rust is a curly-brace, block-structured expression language that looks similar to C and C++ and allows developers to
+> write code that behaves well in large and concurrent systems.
+> [](https://www.i-programmer.info/news/98/6074.html)
+
+
+<!-- column: 1 -->
+
+![](presentation/rustinfo-0-4.jpg)
+> Someone recently quipped that if you can hang yourself with one pointer then three distinct types should do the job in
+> far less time
+> *[](https://www.i-programmer.info/news/98-languages/5042-rust-04-full-integration-of-borrowed-pointers.html)*
+
+# 2015
+
+- Rust 1.0
+- [MIR](https://blog.rust-lang.org/2016/04/19/MIR/)
+
+Rust Today & Features
+===
+
+
 
 Installation of Rust
 ===
