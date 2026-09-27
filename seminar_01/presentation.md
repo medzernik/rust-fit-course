@@ -56,18 +56,18 @@ Basic Seminar Info
 
 # Topics
 
-| Topic                                                               | Date (exceptions) |
-|---------------------------------------------------------------------|-------------------|
-| 1.  Introduction to Rust - tooling, basic syntax, modules and test  | 30. 09            |
-| 2.  Type system, ownership, borrowing                               | 6.10. TUESDAY     |
-| 3.  Control flow and error handling                                 | 14.10.            |
-| 4.  Closures, collections, iterators                                | 21.10.            |
-| 5.  Smart pointers and interior mutability                          | 27.10 TUESDAY     |
-| 6.  Concurrency and parallelism                                     | 4.11              |
-| 7.  Asynchronous programming - basics                               | 11.11             |
-| 8.  Asynchronous programming - project using a simple reverse proxy | 18.11.            |
-| 9.  Macros                                                          | 25.11             |
-| 10. Unsafe, FFI and interop with C/C++                              | 2.12.             |
+| Topic                                                      | Date (exceptions) |
+|------------------------------------------------------------|-------------------|
+| 1.  Introduction to Rust - tooling, syntax, modules & test | 30. 09            |
+| 2.  Type system, ownership, borrowing                      | 6.10. TUESDAY     |
+| 3.  Control flow and error handling                        | 14.10.            |
+| 4.  Closures, collections, iterators                       | 21.10.            |
+| 5.  Smart pointers and interior mutability                 | 27.10 TUESDAY     |
+| 6.  Concurrency and parallelism                            | 4.11              |
+| 7.  Asynchronous programming - basics                      | 11.11             |
+| 8.  Asynchronous programming - simple reverse proxy        | 18.11.            |
+| 9.  Macros                                                 | 25.11             |
+| 10. Unsafe, FFI and interop with C/C++                     | 2.12.             |
 
 > [!TIP]
 > Zed, RustRover, and rustup should be pre-installed on images in Windows and Linux computer rooms.
@@ -79,7 +79,7 @@ Basic Seminar Info
 Assignments
 ===
 
-1. Test module – some exercises to help practice concepts
+1. Test module – the `/test` dir - some exercises to help practice concepts
 2. Homework assigment - the `/src` dir
 3. Code review – all assignments should have a code review by someone else in the course
 4. Group projects – final, bigger project
@@ -580,7 +580,7 @@ Declaring Variables
 1. All declarations are immutable by default
 2. All let blocks need to end with a `;`
 3. You can shadow existing declarations
-4. Declarations are dropped (`Drop` trait) at the end of their respective scope
+4. Declarations are dropped at the end of their respective scope
 
 # Keywords
 
@@ -597,6 +597,7 @@ Declaring Variables
 
 ```rust {2|3|4|5|6|7} +no_background
 fn main() {
+    let x;            // declare a variable with no type (autoinfer later)
     let x = 5;        // declare a variable x with value 5 (autoinfer i32)
     let mut y = 5;    // declare a variable mutable (autoinfer i32)
     let z: i32 = 5;   // manually specify the type (expression must be of i32)
@@ -605,6 +606,11 @@ fn main() {
 }
 ```
 
+> [!IMPORTANT] Automatic Inference
+> Rust automatically infers the data type.
+
+<!-- pause -->
+
 > [!TIP] LSP Inlay Hints
 > Your LSP will show an inlay hint (sometimes hidden by default) of each type.
 
@@ -612,13 +618,13 @@ fn main() {
 > Rust is a strongly typed language. Even though you don't see the types in the examples, they’re enforced.
 
 
-<!-- pause -->
 
-Shadowing
+Shadowing I.
 ===
+
 Shadowing allows us to redefine an existing binding.
 
-```rust +exec 
+```rust +exec {2,4}
 fn main() {
     let x = 5;
     println!("{x}");
@@ -627,11 +633,10 @@ fn main() {
 }
 ```
 
-<!-- pause -->
+Shadowing II.
+===
 
----
-
-```rust +exec
+```rust +exec {2,4}
 fn main() {
     let x = 5;
     println!("{x}");
@@ -654,35 +659,37 @@ Primitive Types
 ===
 Rust has a fairly rich primitive type system.
 
-| Type                    | Example            | Note                                    |
-|-------------------------|--------------------|-----------------------------------------|
-| u8, u16, u32, i64, u128 | 5, 10              |                                         |
-| i8, i16, i32, u64, i128 | -5, 10             |                                         |
-| isize, usize            | -67, 23            | pointer size (CPU arch size)            |
-| f32, f64                | 67.56, -23.09      |                                         |
-| str                     | "hello", "😭 sad"  | UTF-8                                   |
-| char                    | '🫡'               | UTF-8 rune                              |
-| bool                    | true, false        |                                         |
-| []                      | [2,3,4,5]          | fixed-size array                        |
-| &[1..=2]                | &[3,4]             | slice into existing array               |
-| (x, y)                  | (true, 32)         | tuple - multiple types grouped together |
-| fn                      | fn(x: u32) -> bool | function                                |
+| Type                    | Example            | Note                                                |
+|-------------------------|--------------------|-----------------------------------------------------|
+| u8, u16, u32, i64, u128 | 5, 10              |                                                     |
+| i8, i16, i32, u64, i128 | -5, 10             |                                                     |
+| isize, usize            | -67, 23            | pointer size (CPU arch size)                        |
+| f32, f64                | 67.56, -23.09      |                                                     |
+| str                     | "hello", "😭 sad"  | UTF-8 - we can't index easily, auto-null terminated |
+| char                    | '🫡'               | UTF-8 rune                                          |
+| bool                    | true, false        |                                                     |
+| []                      | [2,3,4,5]          | fixed-size array                                    |
+| &[1..=2]                | &[3,4]             | slice into existing array                           |
+| (x, y)                  | (true, 32)         | tuple - multiple types grouped together             |
+| fn                      | fn(x: u32) -> bool | function                                            |
 
-
-Basic Control Flow
+Basic Control Flow I.
 ===
 
-The most basic control flows: `if` and `for`
+The most basic control flows: `if` and `for`.
 
 # `if` + `else`
 
 ```
 if condition {
-    something
+    something;
 } else {
-    something_else
+    something_else;
+    and_yet_another_something;
 }
 ```
+
+<!-- pause -->
 
 > [!TIP] Why no `()`?
 > Rust, Go and some other languages have started requiring you to put `{}`. This frees up the lexer requirement for the
@@ -696,11 +703,18 @@ if condition {
 
 <!-- pause -->
 
-## Example
+> [!Important]
+> There are no ternary operators in Rust.
+
+
+Basic Control Flow I. – If, Else.
+===
+
+# Example
 
 Simple example to check whether a number is even or odd
 
-```rust +exec
+```rust +exec +line_numbers {2-3| 5-7 |2-8}
 fn main() {
     let x = 6;
     let mut is_even = false;
@@ -712,24 +726,115 @@ fn main() {
 }
 ```
 
+Basic Control Flow II. – Loops
+===
+
+Using the `while` `loop` and `for` keywords, you can create loops.
+
+Their associated `continue` and `break <label>` keywords help control the flow.
+Use `'LABEL:` to create a break label to jump to.
+
+# Loop
+`loop` loops forever, until broken by a `break`.
+
+```rust +exec +line_numbers {4-8}
+fn main() {
+    let mut x = 0;
+    
+    loop {
+        x += 1;
+        if x >= 5 {
+            break;
+        }
+    }
+    println!("{x}");
+}
+```
+
+<!-- pause -->
+
+
+> [!Important] No `goto`
+> Rust has no **goto**. Labels only exist for jumps using the **break** keyword.
+
+<!-- pause -->
+
+> [!Important] No `++` and `--`
+> Rust has no postfix or prefix increments or decrements. You must use **+=**.
+
+Basic Control Flow II. – Loops
+===
+
+# While
+
+`while` loops until the condition isn’t met:
+
+<!-- pause -->
+
+```rust +exec +line_numbers {3-5}
+fn main() {
+    let mut x = 0;
+    while x < 5 {
+        x += 1;
+    }
+    println!("while loop finished: {x}!");
+}
+```
+
+> [!TIP]
+> Just as with **if**, you don't use any **()** in the condition.
+
+Basic Control Flow II. - Loops
+===
+
+# For
+`for` loop is the most versatile loop type.
+
+It uses **iterators**. We’ll take a look at iterators in a later stage of the course.
+
+We will create an **iterator** over a range of values. The keyword `in` creates a value
+
+<!-- pause -->
+
+## C
+```c 
+for (int i; i < 5; ++i) {
+    printf("%d", i);
+}
+```
+
+<!-- pause -->
+
+## Rust
+```rust +exec
+fn main() {
+    for i in 0..=10 {
+        print!("{i} ");
+    }
+}
+```
+
+
 Error Messages
 ===
 
-Next Slide
+```rust +exec
+fn main() {
+    let x = 5;
+    x = 10;
+    println!("{x}");
+}
+```
+
+Workspaces & Project Structure
 ===
 
-Next Slide
+Homework
 ===
 
-Next Slide
-===
-
-Next Slide
-===
 
 Bonus: How to open this presentation :)
 ===
-Next Slide
-===
-Next Slide
+
+Thanks!!!
 ===
