@@ -157,7 +157,7 @@ Where is Rust Used?
 <!-- column_layout: [1, 1] -->
 <!-- column: 0 -->
 
-# Companies using Rust
+# Companies & Projects using Rust
 
 - Microsoft
 - Discord
@@ -172,6 +172,7 @@ Where is Rust Used?
 - JetBrains
 - Figma
 - AWS
+- [Linux!](https://www.youtube.com/watch?v=YyRVOGxRKLg)
 
 <!-- pause -->
 
@@ -577,10 +578,11 @@ Declaring Variables
 
 <!-- incremental_lists: true -->
 
-1. All declarations are immutable by default
-2. All let blocks need to end with a `;`
-3. You can shadow existing declarations
-4. Declarations are dropped at the end of their respective scope
+1. All declarations are immutable by default.
+2. All let blocks need to end with a `;`.
+3. You can shadow existing declarations.
+4. Declarations are dropped at the end of their respective scope.
+5. All variables must be initialized to a value.
 
 # Keywords
 
