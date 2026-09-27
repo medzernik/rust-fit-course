@@ -125,7 +125,8 @@ Seminar_01 – About Rust
 # What’s Rust
 
 - The [most loved](https://survey.stackoverflow.co/2025/technology#admired-and-desired) general-purpose programming
-  language
+  language.
+- LLVM-backed language.
 - Initially designed for system programming
     - nowadays used also for web apps, games, etc.
 - Compiled, statically typed, strongly typed, language.
@@ -172,19 +173,21 @@ Where is Rust Used?
 - Figma
 - AWS
 
+<!-- pause -->
+
 # Cool Software in Rust
 
-| Name           | Note                                                                |
-|----------------|---------------------------------------------------------------------|
-| helix          | TUI editor                                                          |
-| zed            | GUI editor                                                          |
-| presenterm     | Presentation tool (this one!)                                       |
-| typst          | LaTeX alternative                                                   |
-| ripgrep        | Very fast reimplementation of Grep                                  |
-| rust-coreutils | Multiplatform reimplementation of GNU coreutils (default in Ubuntu) |
-| nushell        | a shell reimagined                                                  |
-| fish           | semi-bash-compatible  shell                                         |
-| ruff           | Python linter & formatter                                           |
+| Name           | Note                                        |
+|----------------|---------------------------------------------|
+| helix          | TUI editor                                  |
+| zed            | GUI editor                                  |
+| presenterm     | Presentation tool (this one!)               |
+| typst          | LaTeX alternative                           |
+| ripgrep        | Very fast reimplementation of Grep          |
+| rust-coreutils | reimpl of GNU coreutils (default in Ubuntu) |
+| nushell        | a shell reimagined                          |
+| fish           | semi-bash-compatible shell                  |
+| ruff           | Python linter & formatter                   |
 
 <!-- column: 1 -->
 
@@ -208,6 +211,8 @@ History
 
 > "I think I named it after fungi… that is "over-engineered for survival."
 > *\- Graydon Hoare*
+
+<!-- pause -->
 
 # 2010 - 2015
 
@@ -235,10 +240,21 @@ History
 > far less time
 > *[](https://www.i-programmer.info/news/98-languages/5042-rust-04-full-integration-of-borrowed-pointers.html)*
 
+<!-- pause -->
+
 # 2015
 
 - Rust 1.0
+- Rust group was dissolved
+- Formation of the Rust Foundation (Google, Microsoft, AWS, Huawei, Mozilla)
+
+<!-- pause -->
+
+# 2016 - now 
 - [MIR](https://blog.rust-lang.org/2016/04/19/MIR/)
+- New editions released
+- Clippy, MIRI, etc.
+- Support for new architectures
 
 Rust Versioning
 ===
@@ -252,6 +268,8 @@ Rust is released every 6 weeks.
 - nightly
 
 Installation is done using a separate tooling script `rustup`. We’ll look at this a little later.
+
+<!-- pause -->
 
 ## Compiler versions vs. Editions
 
@@ -278,6 +296,8 @@ Installing Rust I.
 > [!IMPORTANT]
 > Rust doesn’t have a linker. This means you have to install a linker yourself.
 
+<!-- pause -->
+
 ## Windows - Installing the linker
 
 If we’re on MS Windows, we’ll need to first install the `MS Build Tools`, available also from
@@ -287,6 +307,8 @@ After installing the Build Tools, we need to make sure we select the entire C/C+
 `Individual Packages` UI insert the `platform latest spectre` search term, then pick the resulting spectre safe
 libraries
 
+<!-- pause -->
+
 > [!TIP]
 > Rust takes a long time to compile. To make this about 1/3rd faster on Windows, you can set up a **Dev Drive**.
 > Follow the instructions [on the Microsoft page](https://learn.microsoft.com/en-us/windows/dev-drive/) if you wish to
@@ -294,9 +316,13 @@ do so. Note that you need to make a separate partition of a minimum 50GB. You ca
 while it's online. The **DevDrive** partition will use ReFS and Windows Defender will work in a deferred async scan mode
 to make compilation a lot faster.
 
+<!-- pause -->
+
 ## Linux
 
 Install the `build-essentials` package on Ubuntu/Debian/Mint (or your distribution equivalent).
+
+<!-- pause -->
 
 ## macOS
 
@@ -313,9 +339,11 @@ will serve as our Rust package manager
 We can find `rustup` on the webpage [rustup.rs](https://rustup.rs)
 or [rust-lang.org](https://rust-lang.org/tools/install/)
 
+<!-- pause -->
+
 That's it! You can open up a new terminal window after it's installed and try to run
 
-```bash +exec 
+```shell +exec 
 cargo --version
 ```
 
@@ -348,6 +376,8 @@ Zed offers collaborative features and fast performance. It’s a multi-language 
 support for `WSL2` and SSH into other machines. Zed also has a great `Helix` and `Vim` modes.
 
 You can get Zed on the page [zed.dev](https://zed.dev)
+
+<!-- pause -->
 
 # Helix
 
@@ -401,11 +431,15 @@ Cargo
 <!-- column: 0 -->
 Maybe even better than Rust. Allows you to manage your Rust projects.
 
+<!-- pause -->
+
 # Creating a project
 
 $ cargo new \<name>
 
 $ cargo init \<name>
+
+<!-- pause -->
 
 # Managing dependencies
 
@@ -416,6 +450,8 @@ $ cargo remove \<dep>
 $ cargo update
 
 $ cargo install \<dep>
+
+<!-- pause -->
 
 # Formatting, checking and building the project
 
@@ -433,6 +469,8 @@ $ cargo test
 
 $ cargo doc
 <!-- column: 1 -->
+
+<!-- pause -->
 
 > [!TIP] clippy
 > Clippy is the official Rust linter. It can check for various patterns that aren’t considered best practice. We use
@@ -468,13 +506,27 @@ fn main() {
 Taking the example apart
 ===
 
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+
 # Example `main()` Function
 
-```rust {1|2|3} +no_background
+
+```rust 
 fn main() {
     println!("Hello, world!");
 }
 ```
+
+## What did you notice?
+<!-- incremental_lists: true -->
+
+- No `return 0`.
+- Functions are declared via `fn` and not via return types.
+    - this simplifies the parsing of the source code and visual parsing as well.
+- Statements end with a `;`.
+    - Note that `;` has a special meaning in Rust and changes the semantics of your code.
+- The entrypoint to the application must be named `main`
 
 <!-- pause -->
 
@@ -486,6 +538,7 @@ fn main() {
 println!("Hello, world");
 ```
 <!-- pause -->
+<!-- column: 1 -->
 
 This macro is defined as:
 
@@ -503,13 +556,16 @@ macro_rules! println {
 ::std::io::_print(format_args!("Hello, world!\n"));
 ```
 
+<!-- pause -->
 > [!TIP] Expanding Macros
 > You can expand macros using the '$ cargo expand' tool, which you can install using '$ cargo install cargo-expand'
 
+<!-- pause -->
 > [!IMPORTANT] Why a macro?
 > Rust doesn’t support the `...` syntax for variadic arguments.
 > The only way to make a function with variable argument input is by using a macro.
 
+<!-- pause -->
 > [!NOTE] Expert-level Topic
 > Macros are an expert-level topic that we’ll take a look at near the end of the seminars.
 > Don't worry - using macros is very easy and fun. Writing them is hell.
