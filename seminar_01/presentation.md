@@ -5,8 +5,54 @@ options:
   implicit_slide_ends: true
 ---
 
+
+Something About Us
+===
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+
+# Matej
+
+Software Engineer, Senior - TBD
+
+## Free Time & Interests
+
+- LEGO
+
+<!-- pause -->
+
+<!-- column: 1 -->
+
+# David
+
+Software Engineer, Senior
+
+## Worked at:
+
+- Deloitte (IT Audit)
+- CGI (design of navigation algorithms)
+- Wooting (firmware, apps (in Rust!), frontend)
+- Správa Železnic, s. o. (frontend developer)
+- Rockwell Automation, s. r. o. (Rust engineer)
+
+## Free Time & Interests
+
+- Trying to contribute to the Rust project (clippy, bors, triagebot)
+- Gaming (indie games, immersive sims, FPS, MOBAs)
+- Exploring random tools (nushell)
+- Buying useless tech and keyboards
+- 
+
+## Contact
+
+- @medzernik - Discord, Signal, Telegram, Steam, GitHub, SourceHut ...
+- [LinkedIn](https://www.linkedin.com/in/david-manca/)
+
 Basic Seminar Info
 ===
+
+<!-- column_layout: [2, 1] -->
+<!-- column: 0 -->
 
 # Topics
 
@@ -23,13 +69,12 @@ Basic Seminar Info
 | 9.  Macros                                                          | 25.11             |
 | 10. Unsafe, FFI and interop with C/C++                              | 2.12.             |
 
-# ICS
-
-![ics](presentation/FIT-REZ-ical.png)
-
-
 > [!TIP]
 > Zed, RustRover, and rustup should be pre-installed on images in Windows and Linux computer rooms.
+
+<!-- column: 1 -->
+# ICS
+![image:width:50%](presentation/FIT-REZ-ical.png)
 
 Assignments
 ===
@@ -73,7 +118,7 @@ Literature and Courses
 
 Seminar_01 – About Rust
 ===
-<!-- column_layout: [1, 1] -->
+<!-- column_layout: [1, 2] -->
 <!-- column: 0 -->
 [Rust Official Website](https://rust-lang.org)
 
@@ -99,11 +144,10 @@ Seminar_01 – About Rust
 - Fantastic compiler error messages
 
 <!-- column: 1 -->
-![](presentation/fastest-elapsed.png)
-![](presentation/fastest-more-elapsed.png)
-
+<!-- alignment: right -->
 [](https://benchmarksgame-team.pages.debian.net/benchmarksgame/box-plot-summary-charts.html)
 
+![image:width:60%](presentation/fastest-elapsed.png)
 
 
 Where is Rust Used?
@@ -128,12 +172,30 @@ Where is Rust Used?
 - Figma
 - AWS
 
+# Cool Software in Rust
+
+| Name           | Note                                                                |
+|----------------|---------------------------------------------------------------------|
+| helix          | TUI editor                                                          |
+| zed            | GUI editor                                                          |
+| presenterm     | Presentation tool (this one!)                                       |
+| typst          | LaTeX alternative                                                   |
+| ripgrep        | Very fast reimplementation of Grep                                  |
+| rust-coreutils | Multiplatform reimplementation of GNU coreutils (default in Ubuntu) |
+| nushell        | a shell reimagined                                                  |
+| fish           | semi-bash-compatible  shell                                         |
+| ruff           | Python linter & formatter                                           |
+
 <!-- column: 1 -->
 
 # Current Adoption Numbers
 
-![](presentation/rust-adoption.png)
+<!-- alignment: right -->
 [](https://devecosystem-2025.jetbrains.com/tools-and-trends)
+
+![image:w:60%](presentation/rust-adoption.png)
+
+
 
 History
 ===
@@ -402,60 +464,55 @@ fn main() {
 
 <!-- pause -->
 
-*However...*
+
+Taking the example apart
+===
+
+# Example `main()` Function
+
+```rust {1|2|3} +no_background
+fn main() {
+    println!("Hello, world!");
+}
+```
 
 <!-- pause -->
 
+# println!()
+
+`println!()` is a macro.
+
+```rust 
+println!("Hello, world");
+```
+<!-- pause -->
+
+This macro is defined as:
+
 ```rust
-#![feature(prelude_import)]
-extern crate std;
-#[prelude_import]
-use std::prelude::rust_2024::*;
-fn main() {
-    {
-        ::std::io::_print(format_args!("Hello, world!\n"));
-    };
+macro_rules! println {
+    () => { ... };
+    ($($arg:tt)*) => { ... };
 }
+```
+
+<!-- pause -->
+... and expands to:
+
+```
+::std::io::_print(format_args!("Hello, world!\n"));
 ```
 
 > [!TIP] Expanding Macros
 > You can expand macros using the '$ cargo expand' tool, which you can install using '$ cargo install cargo-expand'
 
-Taking the example apart
-===
+> [!IMPORTANT] Why a macro?
+> Rust doesn’t support the `...` syntax for variadic arguments.
+> The only way to make a function with variable argument input is by using a macro.
 
-# Full function declaration
-
-```rust 
-fn example(in_a: &str) -> bool {}
-```
-
-<!-- pause -->
-
-```rust 
-fn example<T: Eq + std::fmt::Debug>(in_a: &T) -> bool {}
-```
-
-<!-- pause -->
-
-```rust 
-pub async fn example<'a, 'b, T: Eq + std::fmt::Debug>(in_a: &'a str, in_b: &'b T) -> (bool, &'b str) {}
-```
-
-The third example is using Generics, Lifetimes, multiple return values (tuples) and trait bounds on generics.
-<!-- pause -->
-
-> [!TIP] Don't worry!
-> Rust has a rich type system that conveys a lot of information. If you read the declarations slowly,
-> it’ll make sense, and you won't be as overwhelmed! Plus all that information tells you important
-> details that will (in paradox) save your time in the long run!
-
-<!-- pause -->
-
-> [!TIP] We are in this together!   
-> We’ll go through every function declaration complicated as this together, or
-> you can ask us anytime on Discord on how to read them.
-
+> [!NOTE] Expert-level Topic
+> Macros are an expert-level topic that we’ll take a look at near the end of the seminars.
+> Don't worry - using macros is very easy and fun. Writing them is hell.
 
 Declaring Variables
 ===
@@ -496,7 +553,7 @@ fn main() {
 > Your LSP will show an inlay hint (sometimes hidden by default) of each type.
 
 > [!IMPORTANT]
-> Rust is a strongly typed language. Even though you don't see the types in the examples, they are enforced.
+> Rust is a strongly typed language. Even though you don't see the types in the examples, they’re enforced.
 
 
 <!-- pause -->
@@ -556,7 +613,6 @@ Rust has a fairly rich primitive type system.
 | fn                      | fn(x: u32) -> bool | function                                |
 
 
-
 Basic Control Flow
 ===
 
@@ -564,13 +620,23 @@ The most basic control flows: `if` and `for`
 
 # `if` + `else`
 
-```rust
+```
 if condition {
-something
+    something
 } else {
-something_else
+    something_else
 }
 ```
+
+> [!TIP] Why no `()`?
+> Rust, Go and some other languages have started requiring you to put `{}`. This frees up the lexer requirement for the
+> `()`. Rust therefore doesn't require you to put `()`, but requires `{}` everywhere. This is done for 2 reasons:
+> \-------
+> 1. Makes the `if` statement compose nicely in `let` chains (advanced technique, later)
+> 2. Prevents bugs like the famous [goto fail](https://www.imperialviolet.org/2014/02/22/applebug.html)
+> \-------
+> In other words: languages like C force you to always put `()` but don't require `{}`
+> Rust always forces you to put `{}` but doesn't require `()`.
 
 <!-- pause -->
 
