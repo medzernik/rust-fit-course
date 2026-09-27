@@ -118,7 +118,7 @@ Literature and Courses
 
 Seminar_01 – About Rust
 ===
-<!-- column_layout: [1, 2] -->
+<!-- column_layout: [1, 1] -->
 <!-- column: 0 -->
 [Rust Official Website](https://rust-lang.org)
 
@@ -192,6 +192,8 @@ Where is Rust Used?
 
 <!-- column: 1 -->
 
+<!-- pause -->
+
 # Current Adoption Numbers
 
 <!-- alignment: right -->
@@ -233,6 +235,9 @@ History
 > write code that behaves well in large and concurrent systems.
 > [](https://www.i-programmer.info/news/98/6074.html)
 
+
+
+<!-- pause -->
 
 <!-- column: 1 -->
 
@@ -350,19 +355,12 @@ cargo --version
 
 We’ll look into Cargo a little later.
 
+<!-- pause -->
+
 > [!TIP] Rust Playground
 > You can use the [Rust Playground](https://play.rust-lang.org) to test out your Rust snippets, share them and even run
 > Miri and expand macros!
 
-Build system - Cargo
-===
-
-- An amazing build system
-- Integrated documentation builder
-- Integrated dependency resolution
-- Uses a central registry [crates.io](https://crates.io)
-    - can use other, private registries as well
-- Uses `.lock` files to pin dependencies
 
 IDEs and Editors I.
 ===
@@ -370,6 +368,7 @@ IDEs and Editors I.
 There are many great editors to choose from. Rust has a fantastic LSP `rust-analyzer` that should integrate within
 almost any editor. Our recommendations are `Zed`, `Helix` or `RustRover`.
 
+<!-- pause -->
 # Zed
 
 Zed offers collaborative features and fast performance. It’s a multi-language editor, focused on speed. It has an
@@ -386,10 +385,14 @@ Helix is a terminal editor, similair to `NeoVim` that has a focus on speed and u
 significantly easier to learn than `Vim`, but the motions aren’t transferable easily.
 
 Helix is available ideally using either `WinGet` on Windows, or `brew install helix` on macOS and Linux. Distribution
-repos may have an outdated version of Helix.
+repos may
+<!-- pause -->
+
+ have an outdated version of Helix.
 > [!NOTE]
 > Helix has an incomplete debugger protocol (DAP) support. Debugging may be complicated but should be possible.
 
+<!-- pause -->
 > [!IMPORTANT]
 > When using **NeoVim**, **Helix** or other more obscure editors, you need to install **rust-analyzer** yourself.
 > You can do so by running the command:
@@ -431,44 +434,44 @@ Cargo
 <!-- column_layout: [1, 1] -->
 <!-- column: 0 -->
 Maybe even better than Rust. Allows you to manage your Rust projects.
+<!-- incremental_lists: true -->
+- An amazing build system
+- Integrated documentation builder
+- Integrated dependency resolution
+- Uses a central registry [crates.io](https://crates.io)
+    - can use other, private registries as well
+- Uses `.lock` files to pin dependencies
 
 <!-- pause -->
 
 # Creating a project
 
-$ cargo new \<name>
-
-$ cargo init \<name>
+- $ cargo new \<name>
+- $ cargo init \<name>
 
 <!-- pause -->
 
 # Managing dependencies
 
-$ cargo add \<dep>
+- $ cargo add \<dep>
+- $ cargo remove \<dep>
 
-$ cargo remove \<dep>
-
-$ cargo update
-
-$ cargo install \<dep>
+- $ cargo update
+- $ cargo install \<dep>
+- $ cargo clean
 
 <!-- pause -->
 
 # Formatting, checking and building the project
 
-$ cargo fmt
-
-$ cargo check
-
-$ cargo clippy
-
-$ cargo run
-
-$ cargo build
-
-$ cargo test
-
-$ cargo doc
+- $ cargo fmt
+- $ cargo check
+- $ cargo clippy
+- $ cargo run
+- $ cargo build
+- $ cargo test
+- $ cargo doc
+ 
 <!-- column: 1 -->
 
 <!-- pause -->
@@ -477,14 +480,20 @@ $ cargo doc
 > Clippy is the official Rust linter. It can check for various patterns that aren’t considered best practice. We use
 > Clippy regulary as a CI tool in 'warnings as errors' mode in production
 
+<!-- pause -->
+
 > [!TIP] fmt
 > Rust has a formatter tool that formats the code in a standardized way. Use this tool each time you publish your
 > solution anywhere, as usually it's part of CIs
+
+<!-- pause -->
 
 > [!TIP] automating running of tasks
 > To automate all generic tasks, we recommend the tool [bacon](https://dystroy.org/bacon/). It allows you to easily run
 > check, build and test tools. You can also use RustRover's built in toolset, or automate using Tasks in **Zed** or
 > VSCode.
+
+<!-- pause -->
 
 > [!TIP] doc
 > Rust also has an integrated documentation tool. You can see the documentation formatted using this tool almost
@@ -518,6 +527,8 @@ fn main() {
     println!("Hello, world!");
 }
 ```
+
+<!-- pause -->
 
 ## What did you notice?
 <!-- incremental_lists: true -->
@@ -571,7 +582,7 @@ macro_rules! println {
 > Macros are an expert-level topic that we’ll take a look at near the end of the seminars.
 > Don't worry - using macros is very easy and fun. Writing them is hell.
 
-Declaring Variables
+Declaring Variables I.
 ===
 
 # Rules
@@ -595,9 +606,16 @@ Declaring Variables
 
 <!-- pause -->
 
-# Binding
+Declaring Variables II.
+===
 
-```rust {2|3|4|5|6|7} +no_background
+# Binding
+Binding is the act of attaching the result of an expression to a variable name.
+
+> [!IMPORTANT] Automatic Inference
+> Rust automatically infers the data type.
+
+```rust {2|3|4|5|6|7} +no_background 
 fn main() {
     let x;            // declare a variable with no type (autoinfer later)
     let x = 5;        // declare a variable x with value 5 (autoinfer i32)
@@ -608,13 +626,14 @@ fn main() {
 }
 ```
 
-> [!IMPORTANT] Automatic Inference
-> Rust automatically infers the data type.
+
 
 <!-- pause -->
 
 > [!TIP] LSP Inlay Hints
 > Your LSP will show an inlay hint (sometimes hidden by default) of each type.
+
+<!-- pause -->
 
 > [!IMPORTANT]
 > Rust is a strongly typed language. Even though you don't see the types in the examples, they’re enforced.
@@ -625,6 +644,8 @@ Shadowing I.
 ===
 
 Shadowing allows us to redefine an existing binding.
+
+Question: What is the result of the following example?
 
 ```rust +exec {2,4}
 fn main() {
@@ -638,6 +659,9 @@ fn main() {
 Shadowing II.
 ===
 
+Question: What is the result of the following example?
+Question: Can we get the original binding access back?
+
 ```rust +exec {2,4}
 fn main() {
     let x = 5;
@@ -647,15 +671,6 @@ fn main() {
 }
 
 ```
-
-<!-- pause -->
-
-> [!IMPORTANT] Question
-> - Can we get back to the original binding?
-<!-- pause -->
-> [!IMPORTANT] Answer
-> NO!
-
 
 Primitive Types
 ===
@@ -732,7 +747,6 @@ Basic Control Flow II. – Loops
 ===
 
 Using the `while` `loop` and `for` keywords, you can create loops.
-
 Their associated `continue` and `break <label>` keywords help control the flow.
 Use `'LABEL:` to create a break label to jump to.
 
@@ -798,6 +812,8 @@ We will create an **iterator** over a range of values. The keyword `in` creates 
 
 <!-- pause -->
 
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
 ## C
 ```c 
 for (int i; i < 5; ++i) {
@@ -807,6 +823,18 @@ for (int i; i < 5; ++i) {
 
 <!-- pause -->
 
+## C++
+```cpp 
+vector<string> cars = {"Volvo", "BMW", "Ford", "Mazda"};
+
+for (string car : cars) {
+  cout << car << "\n";
+}
+```
+
+<!-- pause -->
+
+<!-- column: 1 -->
 ## Rust
 ```rust +exec
 fn main() {
@@ -830,6 +858,30 @@ fn main() {
 
 Workspaces & Project Structure
 ===
+Each Rust project has a `Cargo.toml` file. Here you will define:
+- Metadata for your project
+- Dependencies for your project
+- Feature flags and other settings
+- Profiles for your project
+- 
+
+<!-- pause -->
+
+```toml +line_numbers
+[package]
+name = "bors"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88.0"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/rust-lang/bors"
+
+[dependencies]
+clap = { version = "4", features = ["env", "derive"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+anyhow = "1"
+```
 
 Homework
 ===
