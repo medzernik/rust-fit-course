@@ -400,7 +400,11 @@ fn main() {
 }
 ```
 
+<!-- pause -->
+
 *However...*
+
+<!-- pause -->
 
 ```rust
 #![feature(prelude_import)]
@@ -420,23 +424,171 @@ fn main() {
 Taking the example apart
 ===
 
-# Function declaration
+# Full function declaration
 
-```
-fn main() {}──►
-```
-
-```
-fn main() {}
-^^ ^^^^^^ ^^-- function body starts on existing line (K&R style)
-|  |
-|  |__________ function name and arguments       
-|  
-|_____________ function declaration   
+```rust 
+fn example(in_a: &str) -> bool {}
 ```
 
-Next Slide
+<!-- pause -->
+
+```rust 
+fn example<T: Eq + std::fmt::Debug>(in_a: &T) -> bool {}
+```
+
+<!-- pause -->
+
+```rust 
+pub async fn example<'a, 'b, T: Eq + std::fmt::Debug>(in_a: &'a str, in_b: &'b T) -> (bool, &'b str) {}
+```
+
+The third example is using Generics, Lifetimes, multiple return values (tuples) and trait bounds on generics.
+<!-- pause -->
+
+> [!TIP] Don't worry!
+> Rust has a rich type system that conveys a lot of information. If you read the declarations slowly,
+> it’ll make sense, and you won't be as overwhelmed! Plus all that information tells you important
+> details that will (in paradox) save your time in the long run!
+
+<!-- pause -->
+
+> [!TIP] We are in this together!   
+> We’ll go through every function declaration complicated as this together, or
+> you can ask us anytime on Discord on how to read them.
+
+
+Declaring Variables
 ===
+
+# Rules
+
+<!-- incremental_lists: true -->
+
+1. All declarations are immutable by default
+2. All let blocks need to end with a `;`
+3. You can shadow existing declarations
+4. Declarations are dropped (`Drop` trait) at the end of their respective scope
+
+# Keywords
+
+`let <mut> <name>:<type> = <expression>`
+
+<!-- pause -->
+
+> [!TIP] Keywords in Declarations
+> Rust puts the **fn** and **let** keywords first, you declare the type later. This applies also to function arguments.
+
+<!-- pause -->
+
+# Binding
+
+```rust {2|3|4|5|6|7} +no_background
+fn main() {
+    let x = 5;        // declare a variable x with value 5 (autoinfer i32)
+    let mut y = 5;    // declare a variable mutable (autoinfer i32)
+    let z: i32 = 5;   // manually specify the type (expression must be of i32)
+    let a = 5i64;     // manually modify the expression type value (autoinfer i64)
+    let a = 5 as i64; // manually modify the expression type value (autoinfer i64)
+}
+```
+
+> [!TIP] LSP Inlay Hints
+> Your LSP will show an inlay hint (sometimes hidden by default) of each type.
+
+> [!IMPORTANT]
+> Rust is a strongly typed language. Even though you don't see the types in the examples, they are enforced.
+
+
+<!-- pause -->
+
+Shadowing
+===
+Shadowing allows us to redefine an existing binding.
+
+```rust +exec 
+fn main() {
+    let x = 5;
+    println!("{x}");
+    let x = 10;
+    println!("{x}");
+}
+```
+
+<!-- pause -->
+
+---
+
+```rust +exec
+fn main() {
+    let x = 5;
+    println!("{x}");
+    let x = "hello";
+    println!("{x}");
+}
+
+```
+
+<!-- pause -->
+
+> [!IMPORTANT] Question
+> - Can we get back to the original binding?
+<!-- pause -->
+> [!IMPORTANT] Answer
+> NO!
+
+
+Primitive Types
+===
+Rust has a fairly rich primitive type system.
+
+| Type                    | Example            | Note                                    |
+|-------------------------|--------------------|-----------------------------------------|
+| u8, u16, u32, i64, u128 | 5, 10              |                                         |
+| i8, i16, i32, u64, i128 | -5, 10             |                                         |
+| isize, usize            | -67, 23            | pointer size (CPU arch size)            |
+| f32, f64                | 67.56, -23.09      |                                         |
+| str                     | "hello", "😭 sad"  | UTF-8                                   |
+| char                    | '🫡'               | UTF-8 rune                              |
+| bool                    | true, false        |                                         |
+| []                      | [2,3,4,5]          | fixed-size array                        |
+| &[1..=2]                | &[3,4]             | slice into existing array               |
+| (x, y)                  | (true, 32)         | tuple - multiple types grouped together |
+| fn                      | fn(x: u32) -> bool | function                                |
+
+
+
+Basic Control Flow
+===
+
+The most basic control flows: `if` and `for`
+
+# `if` + `else`
+
+```rust
+if condition {
+something
+} else {
+something_else
+}
+```
+
+<!-- pause -->
+
+## Example
+
+Simple example to check whether a number is even or odd
+
+```rust +exec
+fn main() {
+    let x = 6;
+    let mut is_even = false;
+
+    if x % 2 == 0 {
+        is_even = true;
+    }
+    println!("{x} is even: {is_even}");
+}
+```
 
 Error Messages
 ===
