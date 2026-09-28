@@ -858,7 +858,10 @@ fn main() {
 
 Workspaces & Project Structure
 ===
-Each Rust project has a `Cargo.toml` file. Here you will define:
+
+# Cargo.toml
+
+Each Rust project has a `Cargo.toml` file. Here you’ll define:
 - Metadata for your project
 - Dependencies for your project
 - Feature flags and other settings
@@ -881,6 +884,21 @@ clap = { version = "4", features = ["env", "derive"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 anyhow = "1"
+```
+
+<!-- pause -->
+
+# Workspace
+
+Workspaces group multiple projects. They’re defined via the `Cargo.toml` file yet again.
+
+```toml
+[workspace]
+resolver = "3"
+members = ["seminar_01"]
+
+[workspace.package]
+repository = "https://git.sr.ht/~medzernik/rust-fit-course"
 ```
 
 Homework
