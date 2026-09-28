@@ -900,6 +900,8 @@ Workspaces & Project Structure II.
 
 Workspaces group multiple projects. They’re defined via the `Cargo.toml` file yet again.
 
+<!-- pause -->
+
 ```toml +line_numbers
 [workspace]
 resolver = "3"
@@ -909,6 +911,7 @@ members = ["seminar_01"]
 repository = "https://git.sr.ht/~medzernik/rust-fit-course"
 ```
 
+<!-- pause -->
 You can run `cargo <command>` on in a workspace, and it’ll run the `<command>` on each member.
 Cargo workspace members share a single `.lock` file in the root of the workspace.
 Cargo workspace members can be also run individually, either from the package root, or via the
@@ -918,10 +921,12 @@ Tests
 ===
 Rust has an integrated test framework. You can run tests using `cargo test`.
 
-Test is a target - runs all `#[test]` functions declared in the `test` module.
+Test is a target – runs all `#[test]` functions declared in the `test` module.
 
 Example of a test module with a function:
 
+
+<!-- pause -->
 ```rust +line_numbers
 #[cfg(test)]
 pub fn main() {}
@@ -936,8 +941,10 @@ mod tests {
 }
 ```
 
+<!-- pause -->
 `assert!`, `assert_eq!` and `assert_ne!` macros evaluate whether the left side is true or eq/ne the right side.
 
+<!-- pause -->
 These tests can be run either with `cargo test` (and argument to run specific tests) or you can use your IDE/editor's
 gutter view to select and run specific tests.
 
@@ -953,9 +960,11 @@ For each seminar, you’ll get homework. This homework needs to be:
 1. finished by you.
 2. reviewed by someone else.
 
+<!-- pause -->
 You'll finish the homework in the `/src` directory, where the `main.rs` file is present.
 
 
+<!-- pause -->
 Reviewing will be done by someone else. This person changes for each homework.
 
 
