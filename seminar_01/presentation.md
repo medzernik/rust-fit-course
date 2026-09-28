@@ -241,10 +241,15 @@ History
 
 <!-- column: 1 -->
 
-![](presentation/rustinfo-0-4.jpg)
 > Someone recently quipped that if you can hang yourself with one pointer then three distinct types should do the job in
 > far less time
 > *[](https://www.i-programmer.info/news/98-languages/5042-rust-04-full-integration-of-borrowed-pointers.html)*
+
+| Type               | Value                                       |
+|--------------------|---------------------------------------------|
+| Concurrency        | Lightweight tasks with message passing      |
+| Exception handling | Unrecoverable unwinding with task isolation |
+| Memory Model       | optional task-local GC                      |
 
 <!-- pause -->
 
@@ -393,6 +398,7 @@ repos may
 > Helix has an incomplete debugger protocol (DAP) support. Debugging may be complicated but should be possible.
 
 <!-- pause -->
+
 > [!IMPORTANT]
 > When using **NeoVim**, **Helix** or other more obscure editors, you need to install **rust-analyzer** yourself.
 > You can do so by running the command:
@@ -856,7 +862,7 @@ fn main() {
 }
 ```
 
-Workspaces & Project Structure
+Workspaces & Project Structure I.
 ===
 
 # Cargo.toml
@@ -883,16 +889,18 @@ repository = "https://github.com/rust-lang/bors"
 clap = { version = "4", features = ["env", "derive"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
-anyhow = "1"
 ```
 
 <!-- pause -->
+
+Workspaces & Project Structure II.
+===
 
 # Workspace
 
 Workspaces group multiple projects. They’re defined via the `Cargo.toml` file yet again.
 
-```toml
+```toml +line_numbers
 [workspace]
 resolver = "3"
 members = ["seminar_01"]
@@ -901,12 +909,63 @@ members = ["seminar_01"]
 repository = "https://git.sr.ht/~medzernik/rust-fit-course"
 ```
 
+You can run `cargo <command>` on in a workspace, and it’ll run the `<command>` on each member.
+Cargo workspace members share a single `.lock` file in the root of the workspace.
+Cargo workspace members can be also run individually, either from the package root, or via the
+`cargo <command> -p <package_name>`
+
+Tests
+===
+Rust has an integrated test framework. You can run tests using `cargo test`.
+
+Test is a target - runs all `#[test]` functions declared in the `test` module.
+
+Example of a test module with a function:
+
+```rust +line_numbers
+#[cfg(test)]
+pub fn main() {}
+
+mod tests {
+    use super::factorial;
+
+    #[test]
+    fn factorial_0() {
+        assert_eq!(factorial(0), 1);
+    }
+}
+```
+
+`assert!`, `assert_eq!` and `assert_ne!` macros evaluate whether the left side is true or eq/ne the right side.
+
+These tests can be run either with `cargo test` (and argument to run specific tests) or you can use your IDE/editor's
+gutter view to select and run specific tests.
+
+# Seminar Tasks
+To pass your seminar tasks, please make the functions above the test module. The test module already has functions that
+check the correctness of your task. Then run `cargo test -p <seminar_xx>` and if the tests pass, you pass the seminar
+task.
+
+
 Homework
 ===
+For each seminar, you’ll get homework. This homework needs to be:
+1. finished by you.
+2. reviewed by someone else.
+
+You'll finish the homework in the `/src` directory, where the `main.rs` file is present.
+
+
+Reviewing will be done by someone else. This person changes for each homework.
 
 
 Bonus: How to open this presentation :)
 ===
+
+Install presenterm: `$ cargo install presenterm`
+
+then, run the presentation with `$ presenterm <path/to/markdown.md> -x`
+
 
 Thanks!!!
 ===
