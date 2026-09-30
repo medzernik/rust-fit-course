@@ -24,10 +24,6 @@
 //! > Alternatively, you can `cd` into the directory of the package `seminar_01` and run the
 //! > commands directly from there.
 //!
-//! # Elementary
-//!
-//!
-//!
 
 fn main() {
     println!("Hello, world!");
