@@ -13,12 +13,25 @@ Something About Us
 
 # Matej
 
-Software Engineer, Senior - TBD
+Software Engineer, Senior
+
+## Worked at:
+
+- **Honeywell** (navigation systems for Aircraft)
+- **Rockwell Automation, s. r. o.** (Rust engineer)
 
 ## Free Time & Interests
 
 - LEGO
+- Strategy games
+- History
+- Astronomy
+- Rust
 
+## Contact
+
+- @matejalmi – Discord, ...
+- [LinkedIn](https://www.linkedin.com/in/matej-almáši-166973248/)
 <!-- pause -->
 
 <!-- column: 1 -->
@@ -29,11 +42,10 @@ Software Engineer, Senior
 
 ## Worked at:
 
-- Deloitte (IT Audit)
-- CGI (design of navigation algorithms)
-- Wooting (firmware, apps (in Rust!), frontend)
-- Správa Železnic, s. o. (frontend developer)
-- Rockwell Automation, s. r. o. (Rust engineer)
+- **CGI** (design of navigation algorithms)
+- **Wooting** (firmware, apps (in Rust!), frontend)
+- **Správa Železnic, s. o.** (frontend developer)
+- **Rockwell Automation, s. r. o.** (Rust engineer)
 
 ## Free Time & Interests
 
@@ -41,7 +53,7 @@ Software Engineer, Senior
 - Gaming (indie games, immersive sims, FPS, MOBAs)
 - Exploring random tools (nushell)
 - Buying useless tech and keyboards
-- 
+- Rust
 
 ## Contact
 
@@ -51,7 +63,7 @@ Software Engineer, Senior
 Basic Seminar Info
 ===
 
-<!-- column_layout: [2, 1] -->
+<!-- column_layout: [3, 1] -->
 <!-- column: 0 -->
 
 # Topics
@@ -72,49 +84,57 @@ Basic Seminar Info
 > [!TIP]
 > Zed, RustRover, and rustup should be pre-installed on images in Windows and Linux computer rooms.
 
+# Where to Find More Information
+
+- Definitely try the official CVUT Discord - channel `REZ`
+- Feel free to visit the [official website](https://pages.fit.cvut.cz/mancadav/FIT-REZ/)
+- And of course, clone [the repo](https://git.sr.ht/~medzernik/rust-fit-course)!
+    - You can add a `git remote` to your school GitLab and resync each week with our repo.
+
 <!-- column: 1 -->
 # ICS
-![image:width:50%](presentation/FIT-REZ-ical.png)
+
+![image:width:100%](presentation/FIT-REZ-ical.png)
 
 Assignments
 ===
 
-1. Test module – the `/test` dir - some exercises to help practice concepts
-2. Homework assigment - the `/src` dir
-3. Code review – all assignments should have a code review by someone else in the course
-4. Group projects – final, bigger project
+1. Test module – the `/test/number_topic.rs` - some exercises to help practice concepts.
+2. Homework assigment - the `/test/hw_topic.rs`.
+3. Code review – all assignments should have a code review by someone else in the course.
+4. Group projects – final, bigger project.
 
-| Homework                                                                            | Notes                                |
-|-------------------------------------------------------------------------------------|--------------------------------------|
-| 1. Create a simple calculator (+,-,*,/,^,log)                                       | i32 only, div/0 mustn't panic        |
-| 2. Make a serializable struct for JSON                                              |                                      |
-| 2. Find the longest substring and return reference                                  |                                      |
-| 3. Add error handling to the calculator                                             |                                      |
-| 3. Get a trams/stops from Golemio API and print nearest departures of selected stop | https://api.golemio.cz/docs/openapi/ |
-| 4. TBD                                                                              |                                      |
-| 5. TBD                                                                              |                                      |
-| 6. TBD                                                                              |                                      |
-| 7. TBD                                                                              |                                      |
-| 8. TBD                                                                              |                                      |
-| 9. TBD                                                                              |                                      |
-| 10.  TBD                                                                            |                                      |
+| Homework                                                             | Notes                                |
+|----------------------------------------------------------------------|--------------------------------------|
+| 1. Create a simple calculator (+,-,*,/,^,log)                        | i32 only, div/0 mustn't panic        |
+| 2. Make a serializable struct for JSON                               |                                      |
+| 2. Find the longest substring and return reference                   |                                      |
+| 3. Add error handling to the calculator                              |                                      |
+| 3. Get a trams/stops from Golemio API and print departures of a stop | https://api.golemio.cz/docs/openapi/ |
+| 4. TBD                                                               |                                      |
+| 5. TBD                                                               |                                      |
+| 6. TBD                                                               |                                      |
+| 7. TBD                                                               |                                      |
+| 8. TBD                                                               |                                      |
+| 9. TBD                                                               |                                      |
+| 10.  TBD                                                             |                                      |
 
 Literature and Courses
 ===
 
-| Book/Course                                                                                              | Notes                                                              |
-|----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|
-| [Programming Rust 3rd Edition](https://www.oreilly.com/library/view/programming-rust-3rd/9781098176228/) | Goes through everything in detail                                  |
-| [Rust Locks and Atomics](https://mara.nl/atomics/)                                                       | Deep dive into internals of async/parallel                         |
-| [The Rust Programming Language](https://doc.rust-lang.org/book/title-page.html)                          |                                                                    |
-| [Write Powerful Rust Macros](https://www.manning.com/books/write-powerful-rust-macros)                   | Expert-level topics                                                |
-| [Rust for Rustaceans](https://rust-for-rustaceans.com)                                                   | Intermediate book                                                  |
-| [Rustlings](https://rustlings.rust-lang.org)                                                             | Built into RustRover                                               |
-| [Crust of Rust](https://www.youtube.com/playlist?list=PLqbS7AVVErFiWDOAVrPt7aYmnuuOLYvOa)                | In-depth channel                                                   |
-| [Exercism Rust](https://exercism.org/tracks/rust)                                                        | Nonprofit - mostly leetcode tasks                                  |
-| [Codecrafters](https://app.codecrafters.io/catalog)                                                      | Paid but with a rotating free challenge monthly, advanced projects |
-| [Rust Reference](https://doc.rust-lang.org/reference/)                                                   |                                                                    |
-| [Docs](https://docs.rs)                                                                                  |                                                                    |
+| Book/Course                                                                                              |
+|----------------------------------------------------------------------------------------------------------|
+| [Programming Rust 3rd Edition](https://www.oreilly.com/library/view/programming-rust-3rd/9781098176228/) |
+| [Rust Locks and Atomics](https://mara.nl/atomics/)                                                       |
+| [The Rust Programming Language](https://doc.rust-lang.org/book/title-page.html)                          |
+| [Write Powerful Rust Macros](https://www.manning.com/books/write-powerful-rust-macros)                   |
+| [Rust for Rustaceans](https://rust-for-rustaceans.com)                                                   |
+| [Rustlings](https://rustlings.rust-lang.org)                                                             |
+| [Crust of Rust](https://www.youtube.com/playlist?list=PLqbS7AVVErFiWDOAVrPt7aYmnuuOLYvOa)                |
+| [Exercism Rust](https://exercism.org/tracks/rust)                                                        |
+| [Codecrafters](https://app.codecrafters.io/catalog)                                                      |
+| [Rust Reference](https://doc.rust-lang.org/reference/)                                                   |
+| [Docs](https://docs.rs)                                                                                  |
 
 Seminar_01 – About Rust
 ===
@@ -124,37 +144,36 @@ Seminar_01 – About Rust
 
 # What’s Rust
 
+<!-- incremental_lists: true -->
 - The [most loved](https://survey.stackoverflow.co/2025/technology#admired-and-desired) general-purpose programming
-  language.
+  language (~8 years in a row now).
 - LLVM-backed language.
 - Initially designed for system programming
-    - nowadays used also for web apps, games, etc.
 - Compiled, statically typed, strongly typed, language.
-- Utilizes RAII
+- Uses RAII (concept from C++)
 - Memory safe
     - compile-time checking of memory issues
+  - the majority of safety issues are caused by incorrect memory access
 - Multi-paradigm language
     - procedural
     - functional (strongly inspired by functional languages)
     - object-based (no inheritance, but has subtyping)
 - It's *really* fast
-    - has a minimal runtime
-    - no garbage collection
+    - has a minimal runtime & no GC
     - ~zero-cost abstractions
-- Great backwards compatibility
-- Fantastic compiler error messages
+- Fantastic compiler messages
 
 <!-- column: 1 -->
 <!-- alignment: right -->
 [](https://benchmarksgame-team.pages.debian.net/benchmarksgame/box-plot-summary-charts.html)
 
-![image:width:60%](presentation/fastest-elapsed.png)
+![image:width:100%](presentation/fastest-elapsed.png)
 
 
 Where is Rust Used?
 ===
 
-<!-- column_layout: [1, 1] -->
+<!-- column_layout: [1, 2] -->
 <!-- column: 0 -->
 
 # Companies & Projects using Rust
@@ -173,9 +192,11 @@ Where is Rust Used?
 - Figma
 - AWS
 - [Linux!](https://www.youtube.com/watch?v=YyRVOGxRKLg)
+- Rockwell Automation
 
 <!-- pause -->
 
+<!-- column: 1 -->
 # Cool Software in Rust
 
 | Name           | Note                                        |
@@ -190,17 +211,17 @@ Where is Rust Used?
 | fish           | semi-bash-compatible shell                  |
 | ruff           | Python linter & formatter                   |
 
-<!-- column: 1 -->
 
 <!-- pause -->
 
-# Current Adoption Numbers
+Current Adoption Numbers
+===
 
-<!-- alignment: right -->
+
+![image:w:100%](presentation/rust-adoption.png)
+
+<!-- alignment: center -->
 [](https://devecosystem-2025.jetbrains.com/tools-and-trends)
-
-![image:w:60%](presentation/rust-adoption.png)
-
 
 
 History
@@ -222,11 +243,6 @@ History
 - Project Servo
 - Early experiments
 - Originally had GC, was class-based
-- `0.11.0` caused some changes that may explain today's syntax
-    - ~[T] has been removed from the language. This type is superseded by the Vec type.
-    - ~str has been removed from the language. This type is superseded by the String type.
-    - ~T has been removed from the language. This type is superseded by the Box type.
-    - @T has been removed from the language. This type is superseded by the standard library’s std::gc::Gc type.
 - [Rust testcases over time](https://brson.github.io/archaea/)
 - [A look from 2012](https://purplesyringa.moe/blog/a-look-at-rust-from-2012/)
 - [Evolution of compiler errors](https://kobzol.github.io/rust/rustc/2025/05/16/evolution-of-rustc-errors.html)
@@ -241,15 +257,14 @@ History
 
 <!-- column: 1 -->
 
-> Someone recently quipped that if you can hang yourself with one pointer then three distinct types should do the job in
+> Someone recently quipped that if you can hang yourself with one pointer, then three distinct types should do the job
+> in
 > far less time
 > *[](https://www.i-programmer.info/news/98-languages/5042-rust-04-full-integration-of-borrowed-pointers.html)*
 
-| Type               | Value                                       |
-|--------------------|---------------------------------------------|
-| Concurrency        | Lightweight tasks with message passing      |
-| Exception handling | Unrecoverable unwinding with task isolation |
-| Memory Model       | optional task-local GC                      |
+- Lightweight tasks with message passing
+- Unrecoverable unwinding with task isolation
+- optional task-local GC
 
 <!-- pause -->
 
@@ -261,7 +276,8 @@ History
 
 <!-- pause -->
 
-# 2016 - now 
+# 2016 – now
+
 - [MIR](https://blog.rust-lang.org/2016/04/19/MIR/)
 - New editions released
 - Clippy, MIRI, etc.
@@ -289,10 +305,11 @@ Currently, there are `2015`, `2018`, `2021` and `2024` editions of Rust availabl
 
 Editions introduce breaking changes into the language.
 
+<!-- pause -->
 This is possible to keep separate from the compiler updates due to the design of the compiler and
 language, [as seen here](https://blog.rust-lang.org/2018/07/27/what-is-rust-2018/#managing-compatibility)
 
-Most importantly:
+> [!IMPORTANT]
 > Anything that doesn’t require being a part of Rust 2018 will work on Rust 2015 as well. This is due to the way
 > editions work; given the small nature of possible changes, the compiler uses the same internal representation for all
 > editions.
@@ -302,14 +319,14 @@ It’s a standard practice to keep your Rust toolchain updated to the latest `st
 Installing Rust I.
 ===
 
-# Installing the Linker
+# Installing the Linker I.
 
 > [!IMPORTANT]
 > Rust doesn’t have a linker. This means you have to install a linker yourself.
 
 <!-- pause -->
 
-## Windows - Installing the linker
+## Windows – Installing the linker
 
 If we’re on MS Windows, we’ll need to first install the `MS Build Tools`, available also from
 the [link here](https://aka.ms/vs/stable/vs_BuildTools.exe)
@@ -324,10 +341,13 @@ libraries
 > Rust takes a long time to compile. To make this about 1/3rd faster on Windows, you can set up a **Dev Drive**.
 > Follow the instructions [on the Microsoft page](https://learn.microsoft.com/en-us/windows/dev-drive/) if you wish to
 do so. Note that you need to make a separate partition of a minimum 50GB. You can shrink an existing NTFS partition
-while it's online. The **DevDrive** partition will use ReFS and Windows Defender will work in a deferred async scan mode
+while it's online. The **DevDrive** partition will use ReFS, and Windows Defender will work in a deferred async scan
+mode
 to make compilation a lot faster.
 
-<!-- pause -->
+
+Installing the Linker II.
+===
 
 ## Linux
 
@@ -337,9 +357,9 @@ Install the `build-essentials` package on Ubuntu/Debian/Mint (or your distributi
 
 ## macOS
 
-Install the xcode-command line build tools
+Install the xcode-command line build tools with: `$ xcode-select --install` command.
 
-Installing Rust II.
+Installing Rust III.
 ===
 
 # Installing Rust
@@ -352,7 +372,8 @@ or [rust-lang.org](https://rust-lang.org/tools/install/)
 
 <!-- pause -->
 
-That's it! You can open up a new terminal window after it's installed and try to run
+That's it! You can open up a new terminal window after it's installed and try to run the command below to verify if the
+Rust toolchain is installed.
 
 ```shell +exec 
 cargo --version
@@ -374,6 +395,7 @@ There are many great editors to choose from. Rust has a fantastic LSP `rust-anal
 almost any editor. Our recommendations are `Zed`, `Helix` or `RustRover`.
 
 <!-- pause -->
+
 # Zed
 
 Zed offers collaborative features and fast performance. It’s a multi-language editor, focused on speed. It has an
@@ -382,7 +404,9 @@ support for `WSL2` and SSH into other machines. Zed also has a great `Helix` and
 
 You can get Zed on the page [zed.dev](https://zed.dev)
 
-<!-- pause -->
+
+IDEs and Editors II.
+===
 
 # Helix
 
@@ -393,7 +417,7 @@ Helix is available ideally using either `WinGet` on Windows, or `brew install he
 repos may
 <!-- pause -->
 
- have an outdated version of Helix.
+have an outdated version of Helix.
 > [!NOTE]
 > Helix has an incomplete debugger protocol (DAP) support. Debugging may be complicated but should be possible.
 
@@ -406,7 +430,7 @@ repos may
 > The reason for this is that **Zed** and **VSCode** all automatically pull in the LSP separately from the toolchain
 > when launched.
 
-IDEs and Editors II.
+IDEs and Editors III.
 ===
 
 # RustRover
@@ -439,9 +463,8 @@ Cargo
 
 <!-- column_layout: [1, 1] -->
 <!-- column: 0 -->
-Maybe even better than Rust. Allows you to manage your Rust projects.
 <!-- incremental_lists: true -->
-- An amazing build system
+
 - Integrated documentation builder
 - Integrated dependency resolution
 - Uses a central registry [crates.io](https://crates.io)
@@ -452,8 +475,8 @@ Maybe even better than Rust. Allows you to manage your Rust projects.
 
 # Creating a project
 
-- $ cargo new \<name>
-- $ cargo init \<name>
+- $ cargo new \<options> \<path>
+- $ cargo init \<options> \<path>
 
 <!-- pause -->
 
@@ -477,7 +500,7 @@ Maybe even better than Rust. Allows you to manage your Rust projects.
 - $ cargo build
 - $ cargo test
 - $ cargo doc
- 
+
 <!-- column: 1 -->
 
 <!-- pause -->
@@ -491,13 +514,6 @@ Maybe even better than Rust. Allows you to manage your Rust projects.
 > [!TIP] fmt
 > Rust has a formatter tool that formats the code in a standardized way. Use this tool each time you publish your
 > solution anywhere, as usually it's part of CIs
-
-<!-- pause -->
-
-> [!TIP] automating running of tasks
-> To automate all generic tasks, we recommend the tool [bacon](https://dystroy.org/bacon/). It allows you to easily run
-> check, build and test tools. You can also use RustRover's built in toolset, or automate using Tasks in **Zed** or
-> VSCode.
 
 <!-- pause -->
 
@@ -527,7 +543,6 @@ Taking the example apart
 
 # Example `main()` Function
 
-
 ```rust 
 fn main() {
     println!("Hello, world!");
@@ -537,6 +552,7 @@ fn main() {
 <!-- pause -->
 
 ## What did you notice?
+
 <!-- incremental_lists: true -->
 
 - No `return 0`.
@@ -555,6 +571,7 @@ fn main() {
 ```rust 
 println!("Hello, world");
 ```
+
 <!-- pause -->
 <!-- column: 1 -->
 
@@ -583,10 +600,6 @@ macro_rules! println {
 > Rust doesn’t support the `...` syntax for variadic arguments.
 > The only way to make a function with variable argument input is by using a macro.
 
-<!-- pause -->
-> [!NOTE] Expert-level Topic
-> Macros are an expert-level topic that we’ll take a look at near the end of the seminars.
-> Don't worry - using macros is very easy and fun. Writing them is hell.
 
 Declaring Variables I.
 ===
@@ -616,6 +629,7 @@ Declaring Variables II.
 ===
 
 # Binding
+
 Binding is the act of attaching the result of an expression to a variable name.
 
 > [!IMPORTANT] Automatic Inference
@@ -631,8 +645,6 @@ fn main() {
     let a = 5 as i64; // manually modify the expression type value (autoinfer i64)
 }
 ```
-
-
 
 <!-- pause -->
 
@@ -720,9 +732,9 @@ if condition {
 > \-------
 > 1. Makes the `if` statement compose nicely in `let` chains (advanced technique, later)
 > 2. Prevents bugs like the famous [goto fail](https://www.imperialviolet.org/2014/02/22/applebug.html)
-> \-------
-> In other words: languages like C force you to always put `()` but don't require `{}`
-> Rust always forces you to put `{}` but doesn't require `()`.
+>    \-------
+>    In other words: languages like C force you to always put `()` but don't require `{}`
+>    Rust always forces you to put `{}` but doesn't require `()`.
 
 <!-- pause -->
 
@@ -756,13 +768,11 @@ Using the `while` `loop` and `for` keywords, you can create loops.
 Their associated `continue` and `break <label>` keywords help control the flow.
 Use `'LABEL:` to create a break label to jump to.
 
-# Loop
 `loop` loops forever, until broken by a `break`.
 
 ```rust +exec +line_numbers {4-8}
 fn main() {
     let mut x = 0;
-    
     loop {
         x += 1;
         if x >= 5 {
@@ -806,10 +816,11 @@ fn main() {
 > [!TIP]
 > Just as with **if**, you don't use any **()** in the condition.
 
-Basic Control Flow II. - Loops
+Basic Control Flow II. – Loops
 ===
 
 # For
+
 `for` loop is the most versatile loop type.
 
 It uses **iterators**. We’ll take a look at iterators in a later stage of the course.
@@ -820,7 +831,9 @@ We will create an **iterator** over a range of values. The keyword `in` creates 
 
 <!-- column_layout: [1, 1] -->
 <!-- column: 0 -->
+
 ## C
+
 ```c 
 for (int i; i < 5; ++i) {
     printf("%d", i);
@@ -830,6 +843,7 @@ for (int i; i < 5; ++i) {
 <!-- pause -->
 
 ## C++
+
 ```cpp 
 vector<string> cars = {"Volvo", "BMW", "Ford", "Mazda"};
 
@@ -841,7 +855,9 @@ for (string car : cars) {
 <!-- pause -->
 
 <!-- column: 1 -->
+
 ## Rust
+
 ```rust +exec
 fn main() {
     for i in 0..=10 {
@@ -849,7 +865,6 @@ fn main() {
     }
 }
 ```
-
 
 Error Messages
 ===
@@ -868,11 +883,12 @@ Workspaces & Project Structure I.
 # Cargo.toml
 
 Each Rust project has a `Cargo.toml` file. Here you’ll define:
+
 - Metadata for your project
 - Dependencies for your project
 - Feature flags and other settings
 - Profiles for your project
-- 
+-
 
 <!-- pause -->
 
@@ -927,6 +943,7 @@ Example of a test module with a function:
 
 
 <!-- pause -->
+
 ```rust +line_numbers
 #[cfg(test)]
 pub fn main() {}
@@ -942,14 +959,19 @@ mod tests {
 ```
 
 <!-- pause -->
+
 `assert!`, `assert_eq!` and `assert_ne!` macros evaluate whether the left side is true or eq/ne the right side.
 
 <!-- pause -->
 These tests can be run either with `cargo test` (and argument to run specific tests) or you can use your IDE/editor's
 gutter view to select and run specific tests.
 
-# Seminar Tasks
-To pass your seminar tasks, please make the functions above the test module. The test module already has functions that
+Seminar Tasks
+===
+
+To pass your seminar tasks, please make the functions above the test module.
+
+The test module already has functions that
 check the correctness of your task. Then run `cargo test -p <seminar_xx>` and if the tests pass, you pass the seminar
 task.
 
@@ -957,24 +979,21 @@ task.
 Homework
 ===
 For each seminar, you’ll get homework. This homework needs to be:
+
 1. finished by you.
 2. reviewed by someone else.
 
 <!-- pause -->
-You'll finish the homework in the `/src` directory, where the `main.rs` file is present.
+You'll finish the homework in the `/tests` directory, where the `hw_<topic_name>.rs` file is present.
 
-
-<!-- pause -->
-Reviewing will be done by someone else. This person changes for each homework.
+You need to write tests yourself as needed for homework. The check is done using a code review.
 
 
 Bonus: How to open this presentation :)
 ===
 
-Install presenterm: `$ cargo install presenterm`
+1. Install presenterm: `$ cargo install presenterm`
+2. Then, run the presentation with `$ presenterm <path/to/markdown.md> -x`
 
-then, run the presentation with `$ presenterm <path/to/markdown.md> -x`
-
-
-Thanks!!!
+Live Coding & Questions!
 ===
