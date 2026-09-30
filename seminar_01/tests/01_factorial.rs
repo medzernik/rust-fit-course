@@ -3,9 +3,10 @@
 //! cargo test --test 01_factorial`
 //! ```
 //! or ideally by using the IDE configuration (if using Zed or JetBrains RustRover).
-//!
 
 // TODO: Implement a simple factorial function.
+// It should have one input of you know which type. Don't forget that the type is written after the parameter.
+// Example: input: f64
 
 /// Below you can find a set of unit tests.
 #[cfg(test)]

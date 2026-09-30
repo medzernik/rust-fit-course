@@ -4,7 +4,21 @@
 // The input argument is an array of ten `i32` integers.
 // How does that type look like in Rust?
 
-
+/// To iterate through an array, use the loop form from presentation
+/// ```rust
+/// for val in array.iter() {
+///     // do something with val
+/// }
+/// ```
+/// if you want to also receive the index, use .enumerate on the iteration:
+/// ```rust
+/// for (val, index) in array.iter().enumerate() {
+///     // do something with val or index
+/// }
+/// ```
+fn find_largest(array: [i32; 10]) -> i32 {
+    todo!()
+}
 
 /// Below you can find a set of unit tests.
 #[cfg(test)]
