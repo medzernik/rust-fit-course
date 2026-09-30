@@ -124,9 +124,10 @@ Literature and Courses
 
 | Book/Course                                                                                              |
 |----------------------------------------------------------------------------------------------------------|
-| [Programming Rust 3rd Edition](https://www.oreilly.com/library/view/programming-rust-3rd/9781098176228/) |
-| [Rust Locks and Atomics](https://mara.nl/atomics/)                                                       |
 | [The Rust Programming Language](https://doc.rust-lang.org/book/title-page.html)                          |
+| [Brown Book](https://rust-book.cs.brown.edu/experiment-intro.html)                                                                            |
+| [Rust Atomics and Locks](https://mara.nl/atomics/)                                                       |
+| [Programming Rust 3rd Edition](https://www.oreilly.com/library/view/programming-rust-3rd/9781098176228/) |
 | [Write Powerful Rust Macros](https://www.manning.com/books/write-powerful-rust-macros)                   |
 | [Rust for Rustaceans](https://rust-for-rustaceans.com)                                                   |
 | [Rustlings](https://rustlings.rust-lang.org)                                                             |
@@ -136,11 +137,33 @@ Literature and Courses
 | [Rust Reference](https://doc.rust-lang.org/reference/)                                                   |
 | [Docs](https://docs.rs)                                                                                  |
 
+Let's Talk About Rust I.
+===
+
+[Rust Official Website](https://rust-lang.org)
+
+> A language empowering everyone to build reliable and efficient software.
+> \- *The Rust Foundation*
+ 
+## What do you think this means?
+
+Let's Talk About Rust II.
+===
+
+```python +exec +line_numbers
+items = [1, 2, 4, 8, 3]
+
+for item in items:
+    if item % 2 == 0:
+        items.remove(item)
+
+print(items)
+```
+
 Seminar_01 – About Rust
 ===
 <!-- column_layout: [1, 1] -->
 <!-- column: 0 -->
-[Rust Official Website](https://rust-lang.org)
 
 # What’s Rust
 
@@ -164,10 +187,11 @@ Seminar_01 – About Rust
 - Fantastic compiler messages
 
 <!-- column: 1 -->
-<!-- alignment: right -->
-[](https://benchmarksgame-team.pages.debian.net/benchmarksgame/box-plot-summary-charts.html)
 
 ![image:width:100%](presentation/fastest-elapsed.png)
+
+<!-- alignment: right -->
+[](https://benchmarksgame-team.pages.debian.net/benchmarksgame/box-plot-summary-charts.html)
 
 
 Where is Rust Used?
@@ -844,7 +868,7 @@ for (int i; i < 5; ++i) {
 
 ## C++
 
-```cpp 
+```cpp
 vector<string> cars = {"Volvo", "BMW", "Ford", "Mazda"};
 
 for (string car : cars) {
@@ -860,8 +884,9 @@ for (string car : cars) {
 
 ```rust +exec
 fn main() {
-    for i in 0..=10 {
-        print!("{i} ");
+    let cars = vec!["Volvo", "BMW", "Ford", "Mazda"];
+    for car in cars {
+        print!("{car} ");
     }
 }
 ```
@@ -871,9 +896,11 @@ Error Messages
 
 ```rust +exec
 fn main() {
-    let x = 5;
-    x = 10;
-    println!("{x}");
+    let cars = vec!["Volvo", "BMW", "Ford", "Mazda"];
+    for car in cars {
+        print!("{car} ");
+    }
+    print!("{cars:#?}");
 }
 ```
 

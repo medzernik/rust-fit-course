@@ -1,4 +1,4 @@
-# [Rust course pages](https://git.sr.ht/~medzernik/rust-fit-course)
+# [Rust course pages](https://pages.fit.cvut.cz/mancadav/FIT-REZ/)
 
 ## Related resources
 
@@ -9,5 +9,5 @@
 
 ## Maintainers:
 
-  - medzernik
-  - stefus <stefan@fusko.xyz> <fuskoste@fit.cvut.cz>
+  - medzernik (David Manca)
+  - matejalmi (Matej Almasi)
