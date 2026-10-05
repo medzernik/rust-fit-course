@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["seminar_01"]
+members = ["seminar_01", "seminar_02"]
 
 [workspace.package]
 repository = "https://git.sr.ht/~medzernik/rust-fit-course"
