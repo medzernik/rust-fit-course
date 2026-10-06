@@ -1,13 +1,12 @@
-# [Rust course pages](https://pages.fit.cvut.cz/mancadav/FIT-REZ/)
+Hi!
 
-## Related resources
+Please take a look into each seminar. The presentations there can be run by using:
+```shell
+presenterm -x presentation.md
+```
 
-  - [Issue tracker](https://todo.sr.ht/~medzernik/Rust-FIT-CVUT)
-  - Mailing-lists
-    - [rust-fit-cvut-announce](https://lists.sr.ht/~medzernik/rust-fit-cvut-announce)
-    - [rust-fit-cvut-devel](https://lists.sr.ht/~medzernik/rust-fit-cvut-devel)
+If you don't have presenterm installed, make sure you have Rust installed first, and then run:
+```shell
+cargo install presenterm
+```
 
-## Maintainers:
-
-  - medzernik (David Manca)
-  - matejalmi (Matej Almasi)
