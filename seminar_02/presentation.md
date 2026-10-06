@@ -71,8 +71,8 @@ fn main() {
     print_acc(bank_acc_matej);
 }
 
-fn print_acc(bank_name: (&str, f64)) {
-    println!("Account: {}, amount: {}", bank_name.0, bank_name.1);
+fn print_acc(account: (&str, f64)) {
+    println!("Account: {}, amount: {}", account.0, account.1);
 }
 ```
 
@@ -105,10 +105,301 @@ fn main() {
     print_acc(bank_acc_matej);
 }
 
-fn print_acc(bank_name: BankAccount) {
-    println!("Account: {}, amount: {}", bank_name.0, bank_name.1);
+fn print_acc(account: BankAccount) {
+    println!("Account: {}, amount: {}", account.0, account.1);
 }
 ```
-Type System - Named Structs.
+
+Type System - Named Structs
 ===
-Naming the fields of the struct
+Giving sensible names to struct members:
+
+```rust +exec +line_numbers
+struct BankAccount {
+    name: String,
+    amount: f64,
+    interest_rate: f64,
+}
+
+fn main() {
+    let bank_acc_david = BankAccount { name: "David".to_string(), amount: 939938.34, interest_rate: 12. };
+
+    print_acc(bank_acc_david);
+}
+
+fn print_acc(account: BankAccount) {
+    println!("Account: {}, amount: {}, interest_r: {}", account.name, account.amount, account.interest_rate);
+}
+```
+
+Type System - Type Safety
+===
+
+```rust +line_numbers
+struct BankAccount {
+    name: String,
+    amount: Amount,
+    interest_rate: Interest,
+}
+
+struct Amount(f64);
+struct Interest(f64);
+
+fn main() {
+    let name = "David".to_string();
+    let amount = Amount(848484.);
+    let interest = Interest(23.);
+
+    let BankAccount {
+        name,
+        amount,
+        interest_rate: interest,
+    };
+}
+```
+
+Type System - Enums
+===
+
+```rust
+struct BankAccount {
+    name: String,
+    amount: Amount,
+    debt_amount: Amount,
+    interest_rate: Interest,
+    is_credit_card: bool,
+}
+```
+
+```rust
+enum Card {
+    Debit(u32),
+    Credit { number: u32, limit: f64 },
+}
+
+struct BankAccount {
+    name: String,
+    amount: Amount,
+    interest_rate: Interest,
+    card: Card
+}
+```
+
+Ownership - Static & Stack & Heap
+===
+
+```rust
+const magic_numbers: [i32; 4] = [1, 2, 3, 4];
+
+fn main() {
+}
+```
+
+Ownership - Stack
+===
+
+```rust
+fn main() {
+    let reference = get_text();
+}
+
+// This won't compile
+fn get_text<'a>() -> &'a u32 {
+    let x = 4;
+    &x
+}
+```
+
+Ownership - Heap
+===
+
+```rust
+fn main() {
+    let mut x = vec![1, 2, 3, 4];
+    let reference_x = &x;
+    x.push(67);
+    print!("{:?}", &reference_x);
+}
+```
+
+Memory Errors
+===
+
+# What is a memory error?
+
+<!-- pause -->
+
+# What is undefined behavior?
+
+Uninitialized Memory
+===
+
+```cpp
+int x;
+cout << x;
+```
+
+<!-- pause -->
+
+```cpp
+int x;
+
+if (condition) {
+    x = 10;
+    return x;
+} else {
+    return x;
+}
+```
+
+<!-- pause -->
+
+Uninitialized Memory - Rust
+===
+
+```rust +exec +line_numbers
+fn main() {
+    let x;
+
+    if true {
+        x = 10;
+    } else {
+        println!("hello");
+    }
+    println!("{x}");
+}
+
+```
+Nullptr Dereference
+===
+
+```cpp
+string* ptr { NULL };
+cout << *ptr;
+```
+
+```rust +exec +line_numbers
+fn main() {
+    let x: *mut String;
+    println!("{}", *x);
+}
+
+```
+
+OOB Access
+===
+
+```cpp
+  int arr[3] = { 1, 2, 3 };
+  cout << arr[3];
+```
+
+```rust +exec +line_numbers
+fn main() {
+    let x = [1, 2, 3];
+    println!("{}", x[3]);
+}
+```
+
+Dangling Pointers
+===
+
+```cpp
+int* foo() {
+    int x { 42 };
+    return &x;
+}
+```
+
+```rust +exec +line_numbers
+fn main() {
+    let _ = foo();
+}
+
+fn foo<'a>() -> &'a i32 {
+    let x = 42;
+    &x
+}
+```
+
+Double Free
+===
+
+```cpp
+void foo(SomeObject o) {
+    // do stuff
+} // <- freed here
+
+int main() {
+    SomeObject o;
+    foo(o);
+} // <- freed again
+```
+
+Double Free - Rust
+===
+
+```rust +exec +line_numbers
+fn foo(value: String) {
+    println!("{value}");
+}
+
+fn main() {
+    let x = String::new();
+    foo(x);
+    println!("{x}"); // <- what happens if we comment this out?
+}
+```
+
+Use after Free
+===
+
+```cpp
+void foo(SomeObject o) {
+    // do stuff
+}
+
+int main() {
+    SomeObject o;
+    foo(o); // <- freed here
+    cout << o;
+}
+```
+
+```rust +exec +line_numbers
+fn foo(value: String) {
+    println!("{value}");
+}
+
+fn main() {
+    let x = String::new();
+    foo(x);
+    println!("{x}");
+}
+```
+
+Iterator Invalidation
+===
+
+```cpp
+vector<int> v = {1, 2, 3, 4, 5};
+for (auto item = v.begin(); item != v.end(); ++item) {
+    if (*item == 3) {
+        v.push_back(42);  // <--what happes here?
+    }
+}
+```
+
+Iterator Invalidation - Rust
+===
+
+```rust +exec +line_numbers
+fn main() {
+    let mut v = vec![1, 2, 3, 4, 5];
+    for item in v.iter() { // <--what happens when we use `iter_mut()`?
+        if *item == 3 {
+            v.push(42);
+        }
+    }
+}
+```
