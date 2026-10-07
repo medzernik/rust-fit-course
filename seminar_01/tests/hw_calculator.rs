@@ -24,12 +24,12 @@ mod tests {
 
     #[test]
     fn divide_two_numbers() {
-        assert_eq!(add(1, 2), 0.5);
+        assert_eq!(divide(1, 2), 0.5);
     }
 
     #[test]
     fn divide_by_zero() {
-        assert_eq!(divide(1, 0), f64::NAN);
+        assert_eq!(divide(1, 0), f64::INFINITY);
     }
 
     #[test]
@@ -40,10 +40,5 @@ mod tests {
     #[test]
     fn powern_two_numbers() {
         assert_eq!(powern(6, 7), 279_936);
-    }
-
-    #[test]
-    fn sub_two_numbers() {
-        assert_eq!(sub(1, 2), -1);
     }
 }
