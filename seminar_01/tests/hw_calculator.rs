@@ -1,7 +1,7 @@
 //! Implement calculator functions. The tests should pass, if you implement it correctly.
 //! Each function should only take 2 numbers.
-//! Below you can find a set of unit tests.
-///! TODO: implement the solution here. Function names should match with the tests:
+//! Below you can find a set of unit tests. 
+//! TODO: implement the solution here. Function names should match with the tests:
 
 #[cfg(test)]
 mod tests {
