@@ -240,3 +240,16 @@ pub enum DataStoreError {
     Unknown,
 }
 ```
+
+Project - get a trams/stops from Golemio API and print departures of a stop
+===
+
+We will need:
+- serde
+- serde_json
+- serde_toml
+- clap
+- thiserror
+- reqwest
+
+Let's try to program this!
