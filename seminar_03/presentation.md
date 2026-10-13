@@ -251,5 +251,29 @@ We will need:
 - clap
 - thiserror
 - reqwest
+- colored_text
 
 Let's try to program this!
+
+# Preparation
+- Get your key at [Golemio](https://api.golemio.cz/docs/openapi/)
+- Create the `.env` file and put in your key. **Do not push this file!**
+- Use the token as the value of the X-Access-Token header.
+- By default, each API key has a rate limit of 20 requests per 8 seconds.
+- Get the [list of the stops](https://lkod.cz/catalog/praha/datasets)
+  - "Seznam Zastavek JSON"
+
+# Application design
+- Make sure the app can load a config `.toml` file with some settings.
+- Make sure to use `Secrecy` to protect the secrets you get.
+- The JSON of stops is very large, you can just pick your favorite stop and code the ID into the config if you want.
+- Make sure to abstract the structures properly. Make an internal API in your app to display the data.
+- You can either use some basic `println!()` macros to display the data, or send it over another API (like Discord).
+  - Note that other APIs, such as the `serenity` crate for Discord, use async and other patterns we haven't discuessed yet.
+- Try coloring the output somehow (for example you can bg color vehicles that are ahead of their schedule).
+
+## Tips
+- To "sleep" an app loop, use `std::thread::sleep(std::time::Duration::from_millis(u64_here));`
+
+## Example
+![example](presentation/example.jpeg)
