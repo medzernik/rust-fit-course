@@ -247,11 +247,15 @@ Project - get a trams/stops from Golemio API and print departures of a stop
 We will need:
 - serde
 - serde_json
-- serde_toml
+- chrono
+- log
+- env_logger
+- serde_repr
 - clap
 - thiserror
 - reqwest
 - colored_text
+- dotenv-ng
 
 Let's try to program this!
 
@@ -263,7 +267,10 @@ Let's try to program this!
 - Get the [list of the stops](https://lkod.cz/catalog/praha/datasets)
   - "Seznam Zastavek JSON"
 
-# Application design
+
+Application design
+===
+
 - Make sure the app can load a config `.toml` file with some settings.
 - Make sure to use `Secrecy` to protect the secrets you get.
 - The JSON of stops is very large, you can just pick your favorite stop and code the ID into the config if you want.
@@ -271,9 +278,6 @@ Let's try to program this!
 - You can either use some basic `println!()` macros to display the data, or send it over another API (like Discord).
   - Note that other APIs, such as the `serenity` crate for Discord, use async and other patterns we haven't discuessed yet.
 - Try coloring the output somehow (for example you can bg color vehicles that are ahead of their schedule).
-
-## Tips
-- To "sleep" an app loop, use `std::thread::sleep(std::time::Duration::from_millis(u64_here));`
 
 ## Example
 ![example](presentation/example.jpeg)
