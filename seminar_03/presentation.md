@@ -280,4 +280,4 @@ Application design
 - Try coloring the output somehow (for example you can bg color vehicles that are ahead of their schedule).
 
 ## Example
-![example](presentation/example.jpeg)
+![image:width:100%](presentation/example.jpeg)
