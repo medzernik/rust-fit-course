@@ -12,6 +12,7 @@ mod tests {
 
     #[test]
     fn serialize_this() {
+        // TODO: Also modify the struct construction here, or define a impl block with a constructor.
         let student = StudentData {};
         let serialized = serde_json::to_value(student).unwrap();
 
