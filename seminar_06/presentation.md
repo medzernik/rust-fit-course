@@ -8,7 +8,7 @@ Parallelism
 ===
 <!-- incremental_lists: true -->
 - doing things at once
-- example is an array - parallel processing of data
+- example is parallel processing of data in an array 
 
 ```rust +line_numbers +exec
 fn main () {
@@ -61,7 +61,7 @@ Parallelism - How
 - `T` is `Sync` if `&T` is `Send`
 
 # Send
-Allows us to send something to a different thread
+Allows us to send something (safely) to a different thread.
 
 <!-- pause -->
 ## What is not `Send`
@@ -69,7 +69,7 @@ Allows us to send something to a different thread
 
 <!-- pause -->
 # Sync
-Allows us to access something from multiple threads
+Allows us to share something between multiple threads 
 - Mutex, RwLock, ...
 
 <!-- pause -->
@@ -137,5 +137,3 @@ Concurrency
   - Can also be used from the OS - MacOS Grand Central Dispatch (Zed).
 - Keyword `.await` and `async`.
 - Not everything is compatible with `async` yet.
-
-
