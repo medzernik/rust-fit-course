@@ -16,13 +16,13 @@ Always prefer `From` as it also gives you `Into`.
 
 <!-- pause -->
 ```rust +line_numbers
-impl<'a, E: Error + Send + Sync + 'a> From<E> {
+impl<'a, E: Error + Send + Sync + 'a> From<E>
     for Box<dyn Error + Send + Sync + 'a> {
         fn from(err: E) -> Box<dyn Error + Send + Sync + 'a> {
             Box::new(err)
         }
     }
-}
+
 ```
 
 Collections
@@ -35,7 +35,7 @@ Basic collections:
 - Hash Maps - `HashMap<K, V>`
 - Binary Tree Map - `BTreeMap<K, V>`
 - Hash Set - `HashSet<T>`
-- Binary Tree Hash Set - `BTreeSet<T>`
+- Binary Tree Set - `BTreeSet<T>`
 - Linked List - `LinkedList<T>`
 
 Iterators
@@ -50,8 +50,8 @@ Iterators
 let v = vec![10, 40];
 
 let mut iterator = v.iter();
-assert_eq!(iterator.next(), Some(&10)); 
-assert_eq!(iterator.next(), Some(&40)); 
+assert_eq!(iterator.next(), Some(&10));
+assert_eq!(iterator.next(), Some(&40));
 assert_eq!(iterator.next(), None);
 // ...
 ```
@@ -63,7 +63,7 @@ assert_eq!(iterator.next(), None);
 - `iter_mut()` -> for x in vector.iter_mut() {} | for x in &mut vector {}
 - `iter()` -> for x in vector.iter() {} | for x in &vector {}
 
-Ranges 
+Ranges
 ===
 Uses the `std::ops::*`
 <!-- incremental_lists: true -->
@@ -151,12 +151,12 @@ println("{}", *x);
 <!-- pause -->
 
 # Rc\<T>/Arc\<T>
-Reference counting - moving borrow checking to runtime. The `Drop` trait decrements the counter. 
+Reference counting - moving borrow checking to runtime. The `Drop` trait decrements the counter.
 Proper 'free' is called once the counter reaches 0.
 
 <!-- pause -->
 > [!CAUTION]
-> Moving the borrow checking to compile time does NOT make it easier nor does it loosen any requirements.
+> Moving the borrow checking to runtime does NOT make it easier nor does it loosen any requirements.
 > You need to upkeep invariants, and can panic at runtime!
 
 <!-- pause -->
