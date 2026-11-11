@@ -60,4 +60,19 @@ Blocking and Non-blocking IO
   - either asynchrnously wait until IO is ready (`select`, `poll`, `epoll`)
   - or submit an operation and check the results later (`io_uring`)
 
+Runtimes
+===
+- as mentioned, tasks need to be driven by a runtime (executor) that mostly acts as a scheduler + async IO driver
+- Rust doesn't have a default runtime
+- the default runtime used by most projects is [`tokio`](https://tokio.rs)
+- embedded projects often use a runtime provided by [`embassy`](https://docs.rs/embassy-executor/latest/embassy_executor/)
+- runtimes usually take advantage of having multiple threads and juggling tasks between threads
+- runtimes are thus an abstraction over both concurrency and parallelism (usually a better one than manual work with threads)
 
+Futures
+===
+- Primitve of Rust's async model
+- Represents a value that might not be ready yet (e.g. the value is being computed, usually because we wait on some IO in the background)
+- Built on the "polling" model of async
+- Represented by the `Future` trait with a single `poll` method
+- the `poll` method returns `Poll::Ready(T)` or `Poll::Pending`
