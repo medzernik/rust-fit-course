@@ -15,7 +15,11 @@ Concurrency
 
 Asynchrony
 ===
-
+<!-- incremental_lists: true -->
+- "lack of synchrony" aka lack of predictable, predetermined, linear occurence of events
+- in practice, it generally refers to occurence of events that happen at "random" (random as in random access) times
+- reactions to these events generally occur outside of the main program flow (sometimes there is no real main program flow)
+- reactions to these events are generally concurrent
 
 Tasks
 ===
@@ -23,4 +27,4 @@ Tasks
 - a unit of work that is executed asynchronously
 - has to be driven to compeltion by an **executor**/ **runtime** that manages tasks
 - "green threads" aka userspace threads
-- 
+-
