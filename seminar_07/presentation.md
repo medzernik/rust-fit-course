@@ -27,4 +27,12 @@ Tasks
 - a unit of work that is executed asynchronously
 - has to be driven to compeltion by an **executor**/ **runtime** that manages tasks
 - "green threads" aka userspace threads
--
+
+Cooperative Multitasking
+===
+<!-- incremental_lists: true -->
+- multitasking on most modern OSs is preemptive (the scheduler pauses a task without asking)
+- in cooperative multitasking, a task is paused only at specific points programmed in the task (the task has to **yield**s execution)
+- Rust's (like most other programming languages') async programming model relies on **cooperative multitasking**
+
+
