@@ -49,4 +49,15 @@ Cooperative Multitasking
 - in cooperative multitasking, a task is paused only at specific points programmed in the task (the task has to **yield**s execution)
 - Rust's (like most other programming languages') async programming model relies on **cooperative multitasking**
 
+Blocking and Non-blocking IO
+===
+<!-- incremental_lists: true -->
+- IO operations (disk IO, socket IO), in general, take not-insignificant amount of time (disk reads, network calls)
+- by default (in Rust, but also e.g. the most basic OS primitives) this is __blocking__ the calling thread, e.g.
+  the thread is idle and does nothing while waiting for the OS to perform the operation
+- even if the thread is put to sleep by the OS, we pay the price of context switch overhead
+- most modern operating systems provide primitves for non-blocking (asynchronous IO)
+  - either asynchrnously wait until IO is ready (`select`, `poll`, `epoll`)
+  - or submit an operation and check the results later (`io_uring`)
+
 
