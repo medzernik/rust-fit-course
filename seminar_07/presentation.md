@@ -5,6 +5,15 @@ options:
   implicit_slide_ends: true
 ---
 
+
+News
+===
+<!-- incremental_lists: true -->
+- The subject is APPROVED AND LIVE ON KOS
+- GO SIGN UP
+- 5 credits, Z + ZK
+- for both I. and II. level of studies
+
 Concurrency
 ===
 <!-- incremental_lists: true -->
@@ -13,6 +22,9 @@ Concurrency
 - parallelism is a form of concurrency
 - concurrency != parallelism
 
+
+![image:width:100%](presentation/polling_detail.png)
+
 Asynchrony
 ===
 <!-- incremental_lists: true -->
@@ -20,6 +32,8 @@ Asynchrony
 - in practice, it generally refers to occurence of events that happen at "random" (random as in random access) times
 - reactions to these events generally occur outside of the main program flow (sometimes there is no real main program flow)
 - reactions to these events are generally concurrent
+
+![image:width:100%](presentation/polling.png)
 
 Tasks
 ===
