@@ -68,6 +68,7 @@ Runtimes
 - embedded projects often use a runtime provided by [`embassy`](https://docs.rs/embassy-executor/latest/embassy_executor/)
 - runtimes usually take advantage of having multiple threads and juggling tasks between threads
 - runtimes are thus an abstraction over both concurrency and parallelism (usually a better one than manual work with threads)
+- typically, we initialize a runtime and then spawn tasks within it
 
 Futures
 ===
@@ -76,3 +77,17 @@ Futures
 - Built on the "polling" model of async
 - Represented by the `Future` trait with a single `poll` method
 - the `poll` method returns `Poll::Ready(T)` or `Poll::Pending`
+- the tasks we spawn in a runtime have to be `Future`s
+
+Async Await
+===
+- Instead of implementing `Future`s manually, we usually use the `async` keyword that creates a `Future` for us
+- we can use `async` with a block, a `fn` or a closure
+- within an `async` block (or `fn` or...), we can call `.await` on other `Future`s to wait until they are ready
+- calling `.await` also hands control back (yields) to the runtime, which can work on another task
+- `async` desugars or function (or block) to a state machine, saving the state on each `.await`
+
+Pin
+===
+- you can notice `poll` uses `Pin<&mut Self>` as the receiver of the call
+-
