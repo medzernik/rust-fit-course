@@ -1,9 +1,9 @@
-use std::net::{SocketAddr, SocketAddrV4};
+use std::net::SocketAddr;
 
 use clap::Parser;
 use hyper::{Request, Response, Uri, body::Incoming, server, service::service_fn};
 use hyper_util::rt::TokioIo;
-use tokio::{io::AsyncReadExt, net::TcpListener};
+use tokio::net::TcpListener;
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = Some("A simple reverse proxy."))]
@@ -47,5 +47,15 @@ async fn handle_request(
     request: Request<Incoming>,
     server_uri: Uri,
 ) -> Result<Response<Incoming>, std::io::Error> {
+    // Implement this.
+    //
+    // You will need to create a hyper::Client for talking to the proxied server and pass its response back
+    // in the form of a Response. You will also need to modify the http request before passing it on.
+    //
+    // You can use httpbin.org as your proxied server to test your proxy.
+    //
+    // Once you have that in place, implement caching (using e.g. a HashMap). This is kind of broad, so
+    // feel free to ask questions or make assumptions (e.g. about cache eviction, TTL etc.).
+    // Some info on HTTP caching: https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching.
     unimplemented!()
 }
