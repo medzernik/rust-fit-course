@@ -21,26 +21,26 @@ async fn main() {
         listener_addr,
         server_addr,
     } = Args::parse();
+
     let listener = TcpListener::bind(listener_addr).await.unwrap();
-    let (mut stream, client_addr) = listener.accept().await.unwrap();
-    println!("handling connection from: {client_addr}");
 
-    let mut buf = [0u8; 1024];
-    let bytes_read = stream.read(&mut buf).await.unwrap();
+    loop {
+        let (stream, client_addr) = listener.accept().await.unwrap();
+        println!("handling connection from: {client_addr}");
 
-    let data = String::from_utf8(buf[0..bytes_read].to_vec()).unwrap();
+        let io = TokioIo::new(stream);
 
-    let io = TokioIo::new(stream);
-
-    server::conn::http1::Builder::new()
-        .serve_connection(
-            io,
-            service_fn(|req| handle_request(req, server_addr.clone())),
-        )
-        .await
-        .unwrap();
-
-    println!("{data}");
+        let server_addr = server_addr.clone();
+        tokio::task::spawn(async move {
+            server::conn::http1::Builder::new()
+                .serve_connection(
+                    io,
+                    service_fn(|req| handle_request(req, server_addr.clone())),
+                )
+                .await
+                .unwrap();
+        });
+    }
 }
 
 async fn handle_request(
