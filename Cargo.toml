@@ -7,7 +7,9 @@ members = [
     "seminar_04",
     "seminar_05",
     "seminar_06",
-    "seminar_07", "seminar_08",
+    "seminar_07",
+    "seminar_08",
+    "seminar_09",
 ]
 
 [workspace.package]
