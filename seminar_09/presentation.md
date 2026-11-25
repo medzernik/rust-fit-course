@@ -130,6 +130,9 @@ Working with Procedural Macros
   - ... and `quote` for turning "quasi-Rust" code (code that needs interpolating... see later example) into a `TokenStream`
   - typical flow: parse into AST, extract data from AST (identifiers, members, type names...) and interpolate them
     into quasi Rust notated code, then convert it back to a `TokenStream`.
+  - note: `syn` and `quote` use `proc_macro2::TokenStream` - a wrapper around the native `TokenStream`. You
+    can read on motivations for a wrapper [here](https://docs.rs/proc-macro2/latest/proc_macro2/). It converts
+    automatically from/to the native `TokenStream`.
 
 ```rust
 //! my_calculator/my_calculator_derive/src/lib.rs (normal my_calculator library code would live
