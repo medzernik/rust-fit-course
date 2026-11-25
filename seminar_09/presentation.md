@@ -238,3 +238,17 @@ pub fn error(attr: TokenStream, item: TokenStream) -> TokenStream {
     // Do whatever magic you need to do here.
 }
 ```
+
+Funtion-Like Macros
+===
+- invoked just like `macro_rules!` macros
+  - compared to declarative macros, we have more power as we can inspect (and/or parse) all the tokens and transform them
+- defined just like procedural macros (well, they are a type of procedural macro)
+- 1 `TokenStream` in, 1 `TokenStream` out
+
+```rust
+#[proc_macro]
+pub fn some_magic_that_maybe_statically_checks_sql_against_a_real_database(input: TokenStream) -> TokenStream {
+    //Seriously, check what https://docs.rs/sqlx/latest/sqlx/ does, that's some programming art there.
+}
+```
