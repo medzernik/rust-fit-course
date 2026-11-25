@@ -26,6 +26,88 @@ Macros
   - Attribute
 
 
+# Why macros
+
+<!-- incremental_lists: true -->
+- When we cannot achieve what we want using language features
+  - when polymorphism fails
+  - when dynamic dispatch fails
+  - etc...
+- Variable arguments
+- Expanding macros conditionally
+
+# Materials
+- Little Book of Rust Macros
+- Programming Rust 3rd edition
+- Write Powerful Rust Macros
+
+Declarative macros
+===
+Example macro:
+
+```rust
+assert_eq!(gcd(6, 10), 2);
+```
+
+<!-- pause -->
+
+```rust
+match (&gcd(6, 10), &2) {
+    (left_val, right_val) => { // <-- pattern
+        if !(*left_val == *right_val) { // <-- template
+            panic!("assertion `left == right` failed\
+            \n left: {left_val:?}\
+            \n right: {right_val:?}",
+            );
+        }
+    }
+}
+```
+
+Vec Macro
+===
+
+```rust
+// New empty Vec
+let unicorns = vec![];
+// Repeat a value N times
+let buffer = vec![0_u8; 1000];
+// A list of values, separated by commas
+let noodles = vec!["udon", "ramen", "soba"];
+```
+
+<!-- pause -->
+
+```rust
+macro_rules! vec {
+    () => {
+        ::std::vec::Vec::new()
+    };
+    ($elem:expr ; $n:expr) => {
+        ::std::vec::from_elem($elem, $n)
+    };
+    ( $( $x:expr ),* ) => {
+        <[_]>::into_vec(Box::new([ $( $x ),* ]))
+    };
+}
+```
+
+Declarative Constants
+===
+- block: a block (i.e. a block of statements and/or an expression, surrounded by braces)
+- expr: an expression
+- ident: an identifier (this includes keywords)
+- item: an item, like a function, struct, module, impl, etc.
+- lifetime: a lifetime (e.g. 'foo, 'static, …)
+- literal: a literal (e.g. "Hello World!", 3.14, '🦀', …)
+- meta: a meta item; the things that go inside the #[...] and #![...] attributes
+- pat: a pattern
+- path: a path (e.g. foo, ::std::mem::replace, transmute::<_, int>, …)
+- stmt: a statement
+- tt: a single token tree
+- ty: a type
+- vis: a possible empty visibility qualifier (e.g. pub, pub(in crate), …)
+
 Procedural Macros
 ===
 - code-in -> transform -> code-out
