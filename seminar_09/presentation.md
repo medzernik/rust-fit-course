@@ -140,3 +140,40 @@ pub fn my_calculator_derive(input: TokenStream) -> TokenStream {
     // Rust code that operates on TokenStream here.
 }
 ```
+
+Derive Macros
+===
+- It is useful to expose automatic derivations of our `Trait`s if it is possible.
+- We need to "write" an implementation for the users's struct - the struct (its source code lexed into tokens)
+  is handed to us in the input `TokenStream`.
+
+```rust
+//! my_calculator/my_calculator_derive/src/lib.rs
+use proc_macro::TokenStream;
+use quote::quote;
+
+#[proc_macro_derive(MyCalculatorTrait)]
+pub fn my_calculator_derive(input: TokenStream) -> TokenStream {
+    // Parse the tokens into an AST
+    let ast = syn::parse(input).unwrap();
+
+    // Get the name of the struct.
+    let struct_name = &ast.ident;
+
+    // Interpolate it into our quasi-Rust code
+    let interpolated = quote! {
+        impl MyCalculatorTrait for #struct_name {
+            fn do_calculations() {
+                // implementation of the trait goes here.
+                
+                // we can turn the name of the struct into a String and use e.g. in Serializers
+                // or whenever we need to store the name of the type as a String.
+                let name_of_the_struct = stringify!(#name);
+            }
+        }
+    }
+
+    // Convert back to a `TokenStream`.
+    interpolated.into()
+}
+```
