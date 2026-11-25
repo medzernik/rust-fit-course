@@ -213,3 +213,28 @@ pub fn my_calculator_derive(input: TokenStream) -> TokenStream {
     interpolated.into()
 }
 ```
+
+Attribute Macros
+===
+- very similar to derive macros
+- used for creating custom attributes
+
+Refresher on attributes:
+```rust
+#[derive(thiserror::Error, Debug)]
+enum MyError {
+    #[error("Lorem Ipsum Dolor: {0}")] // <- This is an attribute.
+    ExtremelyGenericError(u8);
+}
+```
+
+The definition takes 2 input `TokenStreams`
+- 1 for the item marked with the attribute
+- 1 for the attribute itself
+
+```rust
+#[proc_macro_attribute]
+pub fn error(attr: TokenStream, item: TokenStream) -> TokenStream {
+    // Do whatever magic you need to do here.
+}
+```
